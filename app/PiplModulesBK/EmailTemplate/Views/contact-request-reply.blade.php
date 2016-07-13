@@ -1,0 +1,1 @@
+<html><body style="font-family:Arial, Helvetica, sans-serif;font-size:12px;">{!! $MESSAGE !!}</body></html>
