@@ -19,8 +19,6 @@ class PiplServiceProvider extends  \Illuminate\Support\ServiceProvider
                 $this->loadViewsFrom(__DIR__.'/'.$module.'/Views', $module);
             }
 			
-		
-			
         }
     }
 	

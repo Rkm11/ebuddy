@@ -113,7 +113,7 @@ $(function() {
                   "orderable": false,
                   
                },
-            { data: 'id', name: 'id'},
+            { data: 'id', name: 'id',visible:false},
             { data: 'name', name: 'name'},
             { data: 'email', name: 'email'},
             { data: 'status', name: 'status'},

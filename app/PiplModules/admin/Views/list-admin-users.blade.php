@@ -8,6 +8,7 @@
 
     
 @section('content')
+
 <div class="page-content-wrapper">
 		<div class="page-content">
                     <!-- BEGIN PAGE BREADCRUMB -->
@@ -21,7 +22,7 @@
 					
 				</li>
                         </ul>
-    
+
            @if (session('update-user-status'))
           <div class="alert alert-success">
                 {{ session('update-user-status') }}
@@ -91,6 +92,7 @@
 <script>
 $(function() {
     $('#tbladminusers').DataTable({
+		pageLength:{{GlobalValues::get('per-page-record')}},
         processing: true,
         serverSide: true,
         ajax: {"url":'{{url("/admin/admin-users-data")}}',"complete":afterRequestComplete},
@@ -113,7 +115,7 @@ $(function() {
                   "orderable": false,
                   
                },
-            { data: 'id', name: 'id'},
+            { data: 'id', name: 'id',visible:false},
             { data: 'name', name: 'name'},
             { data: 'email', name: 'email'},
             { data: 'role', name: 'role'},

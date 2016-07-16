@@ -18,6 +18,7 @@ use App\PiplModules\Admin\Models\GlobalSetting;
 use App\PiplModules\Admin\Models\Country;
 use App\PiplModules\Admin\Models\State;
 use App\PiplModules\Admin\Models\City;
+use GlobalValues;
 use Storage;
 
 class AdminController extends Controller
@@ -1149,7 +1150,6 @@ class AdminController extends Controller
               
                 return Datatables::of($admin_users)
              
-                
                 ->addColumn('name', function($admin_users){
                      return $admin_users->first_name." ".$admin_users->last_name;
                 })
@@ -1163,7 +1163,7 @@ class AdminController extends Controller
                      return ($admin_users ->user_status>0)? 'Active': 'Inactive';
                 })
                 ->addColumn('created_at', function($admin_users){
-                     return $admin_users->user->created_at;
+                     return GlobalValues::formatDate($admin_users->user->created_at);
                 })
                
                 ->make(true);

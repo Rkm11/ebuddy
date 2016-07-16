@@ -3,6 +3,11 @@ $segments=Request::segment(2);
 $segment_prameter='';
 $segment_value='';
 switch ($segments) {
+	case 'dashboard':
+                    $segment_prameter = 'dashboard';
+                    $segment_value = 'dashboard';
+                    break;
+					
                 case 'manage-roles':
                     $segment_prameter = 'role';
                     $segment_value = 'global';
@@ -60,7 +65,7 @@ switch ($segments) {
 		
 		case 'content-pages':
                     $segment_prameter = 'content-pages';
-                    $segment_value = 'cms';
+                    $segment_value = 'content-pages';
                     break;
 
 		case 'email-templates':
@@ -107,13 +112,6 @@ switch ($segments) {
                     $segment_value = 'testimonial';
                     break;
 
-
-
-
-
-
-
-
             }
 
 
@@ -125,7 +123,7 @@ switch ($segments) {
 		<div class="page-sidebar navbar-collapse collapse">
 		
 			<ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-				<li class="start active ">
+				<li class="start @if($segment_value=='dashboard') active @endif">
 					<a href="{{url("admin/dashboard")}}">
 					<i class="icon-home"></i>
 					<span class="title">Dashboard</span>
@@ -206,10 +204,10 @@ switch ($segments) {
 				</li>
                                    @if(Auth::user()->hasPermission('view.content-pages')==true || Auth::user()->isSuperadmin())
                                                
-                                <li class="start">
+                                <li class="@if($segment_prameter=='content-pages') active @endif">
 					<a href="{{url("admin/content-pages/list")}}">
 					<i class="icon-list"></i>
-					<span class="title">Manage CMS Pages</span>
+					<span class="title">Manage Content Pages</span>
 					</a>
 				</li>
                                 @endif
