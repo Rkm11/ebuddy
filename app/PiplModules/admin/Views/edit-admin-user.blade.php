@@ -97,7 +97,7 @@
                                         </div>
 
                                         <div class="form-group{{ $errors->has('user_mobile') ? ' has-error' : '' }}">
-                                            <label class="control-label">User Mobile</label>
+                                            <label class="control-label">Mobile No.</label>
 
                                             <input type="text" class="form-control" name="user_mobile" value="{{old('user_mobile',$user_info->userInformation->user_mobile)}}">
                                             @if ($errors->has('user_mobile'))
@@ -107,6 +107,7 @@
                                             @endif
 
                                         </div>
+                                        
                                         <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
                                             <label class="control-label">Gender <sup style='color:red;'>*</sup> </label>
 
@@ -119,6 +120,22 @@
                                             @if ($errors->has('gender'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('gender') }}</strong>
+                                            </span>
+                                            @endif
+
+                                        </div>
+                                         <div class="form-group{{ $errors->has('user_status') ? ' has-error' : '' }}">
+                                            <label class="control-label">Status<sup style='color:red;'>*</sup> </label>
+
+                                            <select class="form-control" name="user_status" id="user_status">
+                                                <option value="">--Select Status--</option>
+                                                <option value="1" @if($user_info->userInformation->user_status==1) selected=selected @endif>Active</option>
+                                                <option value="2" @if($user_info->userInformation->user_status==2) selected=selected @endif>Blocked</option>
+
+                                            </select>
+                                            @if ($errors->has('user_status'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('user_status') }}</strong>
                                             </span>
                                             @endif
 
@@ -147,7 +164,7 @@
 
                                         <div class="margiv-top-10">
                                             <input type="submit" class="btn green-haze" value="Save Changes">
-                                            <a href="{{url('admin/dashboard')}}" class="btn default">
+                                            <a href="{{url('/admin/admin-users')}}" class="btn default">
                                                 Cancel 
                                             </a>
                                         </div>
@@ -183,7 +200,7 @@
                                         </div>
                                         <div class="margiv-top-10">
                                             <input type="submit" class="btn green-haze" value="Chnage Email">
-                                            <a href="{{url('admin/dashboard')}}" class="btn default">
+                                            <a href="{{url('/admin/admin-users')}}" class="btn default">
                                                 Cancel 
                                             </a>
                                         </div>
@@ -227,7 +244,7 @@
                                         </div>
                                         <div class="margiv-top-10">
                                             <input type="submit" class="btn green-haze" value="Change Password">
-                                            <a href="{{url('admin/dashbaord')}}" class="btn default">
+                                            <a href="{{url('/admin/admin-users')}}" class="btn default">
                                                 Cancel 
                                             </a>
                                         </div>

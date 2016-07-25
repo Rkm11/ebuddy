@@ -1,6 +1,6 @@
 <?php
 
-Route::group(array('module'=>'Admin', 'namespace' => 'App\PiplModules\Admin\Controllers','middleware'=>'web','as'=>'admin::'), function() {
+Route::group(array('module'=>'Admin', 'namespace' => 'App\PiplModules\admin\Controllers','middleware'=>'web','as'=>'admin::'), function() {
     //Your routes belong to this module.
 	// Admin Login Profile and logout
     
@@ -51,7 +51,6 @@ Route::group(array('module'=>'Admin', 'namespace' => 'App\PiplModules\Admin\Cont
         Route::get("/admin/list-registered-users-data","AdminController@listRegisteredUsersData")->middleware('permission:view.registered-users');
 	Route::delete("/admin/delete-user/{user_id}","AdminController@deleteRegisteredUser")->middleware('permission:delete.registered-users');
 	Route::delete("/admin/delete-selected-user/{user_id}","AdminController@deleteSelectedRegisteredUser")->middleware('permission:delete.registered-users');
-	Route::get("/admin/update-admin-user/{user_id}","AdminController@updateRegisteredUser")->middleware('permission:update.registered-users');
 	Route::get("/admin/update-registered-user/{user_id}","AdminController@updateRegisteredUser")->middleware('permission:update.registered-users');
 	Route::post("/admin/update-registered-user/{user_id}","AdminController@updateRegisteredUser")->middleware('permission:update.registered-users');
 	Route::post("/admin/update-registered-user-email/{user_id}","AdminController@updateRegisteredUserEmailInfo")->middleware('permission:update.registered-users');

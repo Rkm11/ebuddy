@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\UserInformation;
 use App\UserAddress;
-use App\PiplModules\Roles\Models\Role;
+use App\PiplModules\roles\Models\Role;
 use Validator;
 use Auth;
 use Mail;
@@ -58,9 +58,10 @@ class  ProfileController extends Controller
     }
    protected function verifyUserEmail($activation_code)
     {
-      $user_informations=UserInformation::where('activation_code', $activation_code)->get()->first();
-      if($user_informations)
-      {
+      $user_informations=UserInformation::where('activation_code', $activation_code)->first();
+    
+      if(!empty($user_informations)>0 && isset($user_informations->user_status))
+      {  
            
         if($user_informations->user_status==='0')
         {
@@ -92,9 +93,9 @@ class  ProfileController extends Controller
       }else{
             $errorMsg  = "Error! this link has been expired";
             Auth::logout();
-            if($user_informations->user_type=='1')
+            if(isset($user_informations->user_type) && $user_informations->user_type=='1')
             {
-                 return redirect("admin/login")->with("login-error",$successMsg);
+                 return redirect("admin/login")->with("login-error",$errorMsg);
             }else{
             return redirect("login")->with("login-error",$errorMsg);
             }

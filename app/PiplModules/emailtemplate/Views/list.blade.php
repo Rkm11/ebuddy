@@ -13,7 +13,7 @@
                     <!-- BEGIN PAGE BREADCRUMB -->
 			<ul class="page-breadcrumb breadcrumb">
 				<li>
-					<a href="{{url('admin/dashbard')}}">Dashboard</a>
+					<a href="{{url('admin/dashboard')}}">Dashboard</a>
 					<i class="fa fa-circle"></i>
 				</li>
 				<li>

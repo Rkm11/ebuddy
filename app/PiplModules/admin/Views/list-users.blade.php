@@ -13,7 +13,7 @@
                     <!-- BEGIN PAGE BREADCRUMB -->
 			<ul class="page-breadcrumb breadcrumb">
 				<li>
-					<a href="{{url('admin/dashbard')}}">Dashboard</a>
+					<a href="{{url('admin/dashboard')}}">Dashboard</a>
 					<i class="fa fa-circle"></i>
 				</li>
 				<li>
@@ -74,7 +74,8 @@
 									<div class="cust-chqs">  <p><input type="checkbox" id="select_all_delete" ><label for="select_all_delete"></label>  </p></div>
                                                                  </th>
                                                                  <th>Id</th>
-                                                                 <th>Name</th>
+                                                                 <th>First Name</th>
+                                                                 <th>Last Name</th>
                                                                  <th>Email</th>
                                                                  <th>Status</th>
                                                                  <th>Registered On</th>
@@ -113,11 +114,12 @@ $(function() {
                   "orderable": false,
                   
                },
-            { data: 'id', name: 'id',visible:false},
-            { data: 'name', name: 'name'},
-            { data: 'email', name: 'email'},
-            { data: 'status', name: 'status'},
-           { data: 'created_at', name: 'created_at' },
+            { data: 'id', name: 'id'},
+              { data: 'first_name', name: 'first_name',searchable: true},
+            { data: 'last_name', name: 'last_name',searchable: true},
+            { data: 'email', name: 'user.email'},
+            { data: 'status', name: 'user.user_status'},
+           { data: 'created_at', name: 'user.created_at' },
        
             {data:   "Update",
               render: function ( data, type, row ) {
@@ -146,9 +148,7 @@ $(function() {
                   "orderable": false,
                   name: 'Action'
                   
-            },
-             
-             
+            }
                
         ]
     });

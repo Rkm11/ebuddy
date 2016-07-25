@@ -185,7 +185,7 @@ a:hover {
 
 /* Primary Link */
 .primary-link {
-  color: #65A0D0;
+  color: #00C0EF;
   font-weight: 600;
 }
 .primary-link:hover {
@@ -1278,8 +1278,8 @@ Customized Bootstrap Buttons
 }
 .open .btn-warning.dropdown-toggle {
   color: #fff;
-  background-color: #daae2b;
-  border-color: #bb9521;
+  background-color: #00c0ef;
+  border-color: #00c0ef;
 }
 .btn-warning:active, .btn-warning.active {
   background-image: none;
@@ -1735,10 +1735,23 @@ Dropdowns
 /***
 Dropdown Menu
 ***/
+.dropdown-menu.multilanguage
+{
+  position: relative!important;
+  background: #39a7eb;
+}
+.dropdown-menu.multilanguage li a {
+    color: #fff;
+    transition: all 300ms linear 0s;-o-transition: all 300ms linear 0s;-moz-transition: all 300ms linear 0s;-webkit-transition: all 300ms linear 0s;
+}
+.dropdown-menu.multilanguage li a:hover {
+    background: #00c0ef;
+    color: #fff;
+}
 .dropdown-menu {
   min-width: 175px;
   position: absolute;
-  top: 100%;
+  top: 120%;
   left: 0;
   z-index: 1000;
   display: none;
@@ -1756,6 +1769,7 @@ Dropdown Menu
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
   border-radius: 4px;
+  transition:all 300ms linear 0s;-o-transition:all 300ms linear 0s;-moz-transition:all 300ms linear 0s;-webkit-transition:all 300ms linear 0s;
 }
 .dropdown-menu li.divider {
   background: #f1f3f6;
@@ -3346,9 +3360,14 @@ Customized Bootstrap Pagination
 }
 .pagination .active > a,
 .pagination .active > a:hover {
-  background: #eee;
-  border-color: #dddddd;
-  color: #333;
+  background: #fff !important;
+  border-color: #00c0ef !important;
+  color: #00c0ef !important;
+}
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+  background: #fff !important;
+  border-color: #00c0ef !important;
+  color: #00c0ef !important;
 }
 
 /***
@@ -3687,7 +3706,19 @@ Portlets
 .portlet > .portlet-title > .tools {
   float: right;
   display: inline-block;
-  padding: 12px 0 8px 0;
+  padding: 12px 20px 8px;
+  background:#ddd;
+  display:none;/*temprary*/
+}
+.grey-cascade .btn {
+	background:#00c0ef;
+	border:1px solid transparent;
+	transition:all 300ms linear 0s;-o-transition:all 300ms linear 0s;-moz-transition:all 300ms linear 0s;-webkit-transition:all 300ms linear 0s;
+}
+.grey-cascade .btn:hover {
+	background:#fff;
+	color:#00c0ef;
+	border:1px solid #00c0ef;
 }
 .portlet > .portlet-title > .tools > a {
   display: inline-block;
@@ -3832,6 +3863,7 @@ Portlets
   padding: 0 10px;
   margin-bottom: 0;
   color: #fff;
+  border-top:3px solid #00c0ef;
 }
 .portlet.box > .portlet-title > .caption {
   padding: 11px 0 9px 0;
@@ -4150,12 +4182,7 @@ Dashboard Stats
 Dashboard Stats 2
 ***/
 .dashboard-stat2 {
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -o-border-radius: 4px;
-  border-radius: 4px;
-  background: #fff;
+  background: #00C0EF;
   padding: 15px 15px 30px 15px;
   margin-bottom: 20px;
 }
@@ -4184,9 +4211,12 @@ Dashboard Stats 2
 }
 .dashboard-stat2 .display .number small {
   font-size: 14px;
-  color: #AAB5BC;
+  color: #fafafa;
   font-weight: 600;
   text-transform: uppercase;
+}
+.dashboard-stat2 .progress-info .status .status-title a {
+	color:#fff;
 }
 .dashboard-stat2 .display .icon {
   display: inline-block;
@@ -4688,6 +4718,7 @@ Responsive & Scrollable Tables
 .table-scrollable > .table > tfoot > tr > th,
 .table-scrollable > .table > tfoot > tr > td {
   white-space: nowrap;
+  font-size:13px;
 }
 .table-scrollable > .table-bordered {
   border: 0;
@@ -4699,6 +4730,7 @@ Responsive & Scrollable Tables
 .table-scrollable > .table-bordered > tbody > tr > td:first-child,
 .table-scrollable > .table-bordered > tfoot > tr > td:first-child {
   border-left: 0;
+  font-size:13px;
 }
 .table-scrollable > .table-bordered > thead > tr > th:last-child,
 .table-scrollable > .table-bordered > tbody > tr > th:last-child,
@@ -4707,6 +4739,7 @@ Responsive & Scrollable Tables
 .table-scrollable > .table-bordered > tbody > tr > td:last-child,
 .table-scrollable > .table-bordered > tfoot > tr > td:last-child {
   border-right: 0;
+  font-size:13px;
 }
 .table-scrollable > .table-bordered > thead > tr:last-child > th,
 .table-scrollable > .table-bordered > tbody > tr:last-child > th,
@@ -4715,6 +4748,7 @@ Responsive & Scrollable Tables
 .table-scrollable > .table-bordered > tbody > tr:last-child > td,
 .table-scrollable > .table-bordered > tfoot > tr:last-child > td {
   border-bottom: 0;
+  font-size:13px;
 }
 
 /***
@@ -5276,7 +5310,7 @@ Custom tabs
   margin-top: 0px;
 }
 .tabbable-line > .nav-tabs > li.active {
-  border-bottom: 4px solid #F3565D;
+  border-bottom: 4px solid #00C0EF;
   position: relative;
 }
 .tabbable-line > .nav-tabs > li.active > a {
@@ -5680,7 +5714,6 @@ Blue Default
 /* Portlet */
 .portlet > .portlet-body.blue,
 .portlet.blue {
-  background-color: #4B8DF8;
 }
 
 .portlet.solid.blue > .portlet-title,
@@ -5711,17 +5744,21 @@ Blue Default
 }
 
 .portlet.box.blue {
-  border: 1px solid #7cacfa;
+  border: 1px solid #eee;
   border-top: 0;
 }
 .portlet.box.blue > .portlet-title {
-  background-color: #4B8DF8;
+  background-color: #eee;
 }
 .portlet.box.blue > .portlet-title > .caption {
-  color: #FFFFFF;
+  color: #00c0ef;
+  text-transform:uppercase;
+  font-weight:bold;
 }
 .portlet.box.blue > .portlet-title > .caption > i {
-  color: #FFFFFF;
+  color: #00c0ef;
+  margin-right:15px;
+  font-size:18px;
 }
 .portlet.box.blue > .portlet-title > .actions .btn-default {
   background: transparent !important;
@@ -8720,17 +8757,27 @@ Grey Cascade
 }
 
 .portlet.box.grey-cascade {
-  border: 1px solid #b1bdbd;
+  border: 1px solid #eee;
   border-top: 0;
 }
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+	background:#fff;
+  	font-size:13px;
+}
 .portlet.box.grey-cascade > .portlet-title {
-  background-color: #95A5A6;
+  background-color: #eee;
+  border:1px solid #eee;
+  border-top:3px solid #00c0ef;
 }
 .portlet.box.grey-cascade > .portlet-title > .caption {
-  color: #FFFFFF;
+  color: #00c0ef;
+  text-transform:uppercase;
+  font-weight:bold;
 }
 .portlet.box.grey-cascade > .portlet-title > .caption > i {
-  color: #FFFFFF;
+	color: #00c0ef;
+    font-size: 18px;
+    margin-right: 15px;
 }
 .portlet.box.grey-cascade > .portlet-title > .actions .btn-default {
   background: transparent !important;
@@ -12651,11 +12698,11 @@ Purple Soft
 
 /* General Text & Icon Font Colors */
 .font-purple-soft {
-  color: #8877a9 !important;
+  color: #fff !important;
 }
 
 .progress-bar.purple-soft {
-  background: #8877a9 !important;
+  background: #fff !important;
   color: #FFFFFF !important;
 }
 

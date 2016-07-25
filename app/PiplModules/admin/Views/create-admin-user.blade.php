@@ -140,10 +140,10 @@
                         <select class="form-control" name='role' id="role" >
                         @foreach($roles as $role)
                         
-                        @if($role->name!='registered user')
+                          @if($role->slug!='registered.user')
                             <option value="{{$role->id}}" >{{$role->name}}</option>
                           
-                        @endif
+                          @endif
                         
                         @endforeach
                         </select>

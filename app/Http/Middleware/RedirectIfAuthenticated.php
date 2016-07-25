@@ -20,7 +20,9 @@ class RedirectIfAuthenticated
         if (Auth::guard($guard)->check()) {
             return redirect('/');
         }
+       
         $request->session()->put("is_sign_up",$request->is("register"));
+       
         return $next($request);
     }
 }

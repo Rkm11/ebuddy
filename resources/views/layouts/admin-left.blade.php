@@ -3,11 +3,6 @@ $segments=Request::segment(2);
 $segment_prameter='';
 $segment_value='';
 switch ($segments) {
-	case 'dashboard':
-                    $segment_prameter = 'dashboard';
-                    $segment_value = 'dashboard';
-                    break;
-					
                 case 'manage-roles':
                     $segment_prameter = 'role';
                     $segment_value = 'global';
@@ -65,7 +60,7 @@ switch ($segments) {
 		
 		case 'content-pages':
                     $segment_prameter = 'content-pages';
-                    $segment_value = 'content-pages';
+                    $segment_value = 'cms';
                     break;
 
 		case 'email-templates':
@@ -112,18 +107,23 @@ switch ($segments) {
                     $segment_value = 'testimonial';
                     break;
 
+
+
+
+
+
+
+
             }
 
 
 ?>
-
-
 <div class="page-sidebar-wrapper">
 
 		<div class="page-sidebar navbar-collapse collapse">
 		
 			<ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-				<li class="start @if($segment_value=='dashboard') active @endif">
+				<li class="start active ">
 					<a href="{{url("admin/dashboard")}}">
 					<i class="icon-home"></i>
 					<span class="title">Dashboard</span>
@@ -145,7 +145,7 @@ switch ($segments) {
 						</li>
                                                 @endif
                                                 
-                                                   @if(Auth::user()->hasPermission('view.email-templates')==true || Auth::user()->isSuperadmin())
+                                                   @if(Auth::user()->hasPermission('view.global-settings')==true || Auth::user()->isSuperadmin())
                                                 <li class="@if($segment_prameter=='globalsetting') active @endif"> 
 							<a href="{{url('admin/global-settings')}}">
 							<i class="glyphicon glyphicon-cog"></i> Manage Global Settings
@@ -204,10 +204,10 @@ switch ($segments) {
 				</li>
                                    @if(Auth::user()->hasPermission('view.content-pages')==true || Auth::user()->isSuperadmin())
                                                
-                                <li class="@if($segment_prameter=='content-pages') active @endif">
+                                <li class="start">
 					<a href="{{url("admin/content-pages/list")}}">
 					<i class="icon-list"></i>
-					<span class="title">Manage Content Pages</span>
+					<span class="title">Manage CMS Pages</span>
 					</a>
 				</li>
                                 @endif
@@ -234,7 +234,7 @@ switch ($segments) {
                                  @if(Auth::user()->hasPermission('view.contact-requests')==true || Auth::user()->isSuperadmin())
                                <li>
 					<a href="javascript:void(0);">
-					<i class="icon-user"></i>
+					<i class="icon-envelope"></i>
 					<span class="title">Manage Contact Us</span>
 					<span class="arrow"></span>
 					</a>
@@ -250,7 +250,7 @@ switch ($segments) {
                                                     @if(Auth::user()->hasPermission('view.registered-users')==true || Auth::user()->isSuperadmin())
                                                
                                                 <li>
-							 <a href="{{url("admin/contact-requests")}}">Manage Contact Reqests</a>
+							 <a href="{{url("admin/contact-requests")}}">Manage Contact Requests</a>
 						</li>
                                               @endif
 						
@@ -261,7 +261,7 @@ switch ($segments) {
                              @if(Auth::user()->hasPermission('view.faqs')==true || Auth::user()->isSuperadmin())
                                <li>
 					<a href="javascript:void(0);">
-					<i class="icon-user"></i>
+					<i class="icon-question"></i>
 					<span class="title">Manage Faq's</span>
 					<span class="arrow"></span>
 					</a>
@@ -289,7 +289,7 @@ switch ($segments) {
                                @if(Auth::user()->hasPermission('view.blog')==true || Auth::user()->isSuperadmin())
                                <li>
 					<a href="javascript:void(0);">
-                                            <i class="icon-user"></i>
+                                            <i class="icon-list"></i>
                                             <span class="title">Manage Blogs</span>
                                             <span class="arrow"></span>
 					</a>

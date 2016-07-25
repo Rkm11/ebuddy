@@ -16,10 +16,10 @@ class PostCategory extends Model
 	
 	public function parentCat()
 	{
-		return $this->belongsTo('App\PiplModules\Blog\Models\PostCategory','parent_id','id');
+		return $this->belongsTo('App\PiplModules\blog\Models\PostCategory','parent_id','id');
 	}
 	public function posts()
 	{
-		return $this->hasMany('App\PiplModules\Blog\Models\Post','post_category_id');
+		return $this->hasMany('App\PiplModules\blog\Models\Post','post_category_id');
 	}
 }

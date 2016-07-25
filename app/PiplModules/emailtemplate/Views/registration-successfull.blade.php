@@ -2,7 +2,9 @@
         <br>
         Your registration has been completed successfully!
        
-        Please activate your account by clicking on the link provided belowground
+        Please activate your account by clicking on the link provided below
         
-       {{$VERIFICATION_LINK}}
+        <a href="{{$VERIFICATION_LINK}}">Click Here</a>
+  
+          
         Thanks,<br>PIPL Lib Team

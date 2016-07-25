@@ -14,7 +14,7 @@ class Faq extends Model
 	
 	public function category()
 	{
-		return $this->hasOne('App\PiplModules\Faq\Models\FaqCategory','id','faq_category_id');
+		return $this->hasOne('App\PiplModules\faq\Models\FaqCategory','id','faq_category_id');
 	}
 		
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\PiplModules\contactrequest\Controllers;
 use Auth;
 use Auth\User;

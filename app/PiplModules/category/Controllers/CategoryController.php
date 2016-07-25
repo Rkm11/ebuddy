@@ -1,5 +1,4 @@
 <?php
-
 namespace App\PiplModules\category\Controllers;
 use Auth;
 use Auth\User;
@@ -12,7 +11,6 @@ use Storage;
 use App\PiplModules\category\Models\Category;
 use Mail;
 use Datatables;
-
 class CategoryController extends Controller
 {
 

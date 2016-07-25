@@ -2,9 +2,9 @@
 Lock Page
 ***/
 body {
-  background-color: #465568 !important;
   padding: 0;
   margin: 0;
+   background-image:url("../images/bg.jpg");
 }
 
 .page-lock {
@@ -22,23 +22,18 @@ body {
 .page-lock .page-body {
   width: 100%;
   margin-top: 50px;
-  background-color: #f5f5f5;
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
-  -ms-border-radius: 7px;
-  -o-border-radius: 7px;
-  border-radius: 7px;
+  background-color: rgba(255,255,255,0.7);
 }
 
 .lock-head {
   display: block;
-  background-color: #809fff;
   text-align: center;
   padding-top: 15px;
   padding-bottom: 15px;
   font-size: 22px;
   font-weight: 400;
-  color: #fff;
+  color: #157bbb;
+  border-bottom:1px solid #157bbb;
   -webkit-border-radius: 7px 7px 0 0;
   -moz-border-radius: 7px 7px 0 0;
   -ms-border-radius: 7px 7px 0 0;
@@ -61,7 +56,7 @@ body {
 }
 
 .lock-form {
-  padding-left: 40px;
+  width:100%;
 }
 
 .lock-form h4 {
@@ -78,7 +73,7 @@ body {
 .lock-form .form-group .form-control {
   background-color: #fff;
   border: none;
-  width: 300px;
+  width: 100%;
   height: 40px;
   color: #697687;
 }

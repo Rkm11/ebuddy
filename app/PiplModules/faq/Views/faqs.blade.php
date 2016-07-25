@@ -31,13 +31,14 @@
                         <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$faq->id}}" aria-expanded="false">{{$faq->question}}</a>
                     </h4>
                 </div>
+              
                 <div id="collapse{{$faq->id}}" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
                     <div class="panel-body">
                          {!! $faq->answer !!}
                     </div>
                 </div>  
                    
-             </div>
+             
             </div>
            @endforeach
            

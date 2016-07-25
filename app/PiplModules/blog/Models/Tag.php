@@ -10,7 +10,7 @@ class Tag extends Model
 	
 	public function posts()
     {
-         return $this->belongsToMany('App\PiplModules\Blog\Models\Post');
+         return $this->belongsToMany('App\PiplModules\blog\Models\Post');
     }
 	
 }

@@ -12,7 +12,7 @@
                     <!-- BEGIN PAGE BREADCRUMB -->
 			<ul class="page-breadcrumb breadcrumb">
 				<li>
-					<a href="{{url('admin/dashbard')}}">Dashboard</a>
+					<a href="{{url('admin/dashboard')}}">Dashboard</a>
 					<i class="fa fa-circle"></i>
 				</li>
 				<li>
@@ -104,11 +104,10 @@
                        
                       </div>
                        
-                         <div class="form-group  @if ($errors->has('page_seo_title')) has-error @endif">
+                     <div class="form-group  @if ($errors->has('page_seo_title')) has-error @endif">
                           <label for="page_alias" class="col-md-3 control-label">Page SEO Title <sup>*</sup></label>
-                       
                             <div class="col-md-9">     
-                          <input class="form-control" name="page_seo_title" value="{{old('page_seo_title',$page_information->page_seo_title)}}" />
+                               <input class="form-control" name="page_seo_title" value="{{old('page_seo_title',$page_information->page_seo_title)}}" />
                                @if ($errors->has('page_seo_title'))
                                     <span class="help-block">
                                         <strong class="text-danger">{{ $errors->first('page_seo_title') }}</strong>
@@ -116,9 +115,8 @@
                                 @endif
         
                           </div>
-                       
                       </div>
-                       <div class="form-group  @if ($errors->has('page_meta_keywords')) has-error @endif">
+                      <div class="form-group  @if ($errors->has('page_meta_keywords')) has-error @endif">
                           <label for="page_alias" class="col-md-3 control-label">Page Meta Keywords<sup>*</sup></label>
                        
                             <div class="col-md-9">     

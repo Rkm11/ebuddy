@@ -1,5 +1,5 @@
 <?php
-namespace App\PiplModules\Admin\Models;
+namespace App\PiplModules\admin\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

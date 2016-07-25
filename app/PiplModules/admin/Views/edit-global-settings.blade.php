@@ -40,22 +40,38 @@
                    <div class="row">
                         <div class="col-md-12">    
                       <div class="col-md-8">  
-                         <div class="form-group">
+                         <div class="form-group {{ $errors->has('value') ? ' has-error' : '' }}">
                           <label class="col-md-6 control-label" for="{{$setting->slug}}"> {{$setting->name}}</label>
                        
                             <div class="col-md-6">     
                               @if(in_array("image",explode("|",$setting->validate)))
                                <input name="value" type="file" class="form-control" id="{{$setting->slug}}">
-                               @else
+                               @elseif ($setting->id=='4')
+                               <select class='form-control' name='value' id='value'>
+                                    <option value='Y-m-d H:m:s'>Y-m-d H:m:s</option>
+                                    <option value='Y/m/d H:m:s'>Y-m-d H:m:s</option>
+                                    <option value='d-m-Y H:m:s'>d-m-Y H:m:s</option>
+                                    <option value='d/m/Y H:m:s'>d/m/Y H:m:s</option>
+                                    <option value='m/d/Y H:m:s'>m/d/Y H:m:s</option>
+                                    <option value='m-d-Y H:m:s'>m-d-Y H:m:s</option>
+                                    <option value='Y-m-d'>Y-m-d</option>
+                                    <option value='Y/m/d'>Y/m/d</option>
+                                    <option value='d-m-Y'>d-m-Y</option>
+                                    <option value='d/m/Y'>d/m/Y</option>
+                                    <option value='m/d/Y'>m/d/Y</option>
+                                    <option value='m-d-Y'>m-d-Y</option>
+                               </select>
+                                @else
                                  <input name="value" type="text" class="form-control" id="{{$setting->slug}}" value="{{old('value',$setting->value)}}">
-                                @endif
+                               
+                                 @endif
                                 @if ($errors->has('value'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('value') }}</strong>
                                     </span>
                                 @endif
                           </div>
-                       
+                       <img src="{{storage:get("/storage/global-settings/".$global->value)}}"
                       </div>
                     <div class="form-group">
                          <div class="col-md-12">   

@@ -11,7 +11,7 @@
                     <!-- BEGIN PAGE BREADCRUMB -->
 			<ul class="page-breadcrumb breadcrumb">
 				<li>
-					<a href="{{url('admin/dashbard')}}">Dashboard</a>
+					<a href="{{url('admin/dashboard')}}">Dashboard</a>
 					<i class="fa fa-circle"></i>
 				</li>
 				<li>
@@ -169,7 +169,7 @@
                        
                       </div>
                      <div class="form-group @if ($errors->has('seo_description')) has-error @endif">
-                          <label class="col-md-6 control-label">SEO Title<sup>*</sup></label>
+                          <label class="col-md-6 control-label">SEO Description<sup>*</sup></label>
                        
                             <div class="col-md-6">     
                                 <input class="form-control" name="seo_description" value="{{old('seo_description',$post->seo_description)}}" />

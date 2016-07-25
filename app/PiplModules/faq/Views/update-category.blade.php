@@ -12,7 +12,7 @@
                     <!-- BEGIN PAGE BREADCRUMB -->
 			<ul class="page-breadcrumb breadcrumb">
 				<li>
-					<a href="{{url('admin/dashbard')}}">Dashboard</a>
+					<a href="{{url('admin/dashboard')}}">Dashboard</a>
 					<i class="fa fa-circle"></i>
 				</li>
 				<li>
@@ -85,13 +85,13 @@
                                 @if ($errors->has('name')) <span class="help-block"> <strong class="text-danger">{{ $errors->first('parent_id') }}</strong> </span> @endif </div>
         
                           </div>
-                       
-                      </div>
-                      <div class="form-group">
+                        <div class="form-group">
                          <div class="col-md-12">   
                             <button type="submit" id="submit" class="btn btn-primary  pull-right">Update</button>
                          </div>
                   </div>
+                      </div>
+                     
                 </div>
               </div>
             </div>

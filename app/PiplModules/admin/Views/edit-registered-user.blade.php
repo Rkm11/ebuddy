@@ -70,7 +70,7 @@
                             <div class="tab-content">
                                 <!-- PERSONAL INFO TAB -->
                                 <div class="tab-pane @if(!($errors->has('email') || $errors->has('confirm_email')|| $errors->has('current_password')|| $errors->has('new_password') || $errors->has('confirm_password') || session('password-update-fail'))) active @endif" id="tab_1_1">
-                                    <form name="update_profile"  id="update_profile" role="form" method="POST" action="{{ url('/admin/update-registered-user/'.$user_info->id)}}">
+                                    <form name="update_profile"  id="update_profile" role="form" method="post" action="{{ url('/admin/update-registered-user/'.$user_info->id)}}">
                                         {!! csrf_field() !!}
                                         <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
                                             <label class="control-label">First Name <sup style='color:red;'>*</sup></label>
@@ -107,6 +107,22 @@
                                             @endif
 
                                         </div>
+                                        <div class="form-group{{ $errors->has('user_status') ? ' has-error' : '' }}">
+                                            <label class="control-label">Status<sup style='color:red;'>*</sup> </label>
+
+                                            <select class="form-control" name="user_status" id="user_status">
+                                                <option value="">--Select Status--</option>
+                                                <option value="1" @if($user_info->userInformation->user_status==1) selected=selected @endif>Active</option>
+                                                <option value="2" @if($user_info->userInformation->user_status==2) selected=selected @endif>Blocked</option>
+
+                                            </select>
+                                            @if ($errors->has('user_status'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('user_status') }}</strong>
+                                            </span>
+                                            @endif
+
+                                        </div>
                                         <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
                                             <label class="control-label">Gender <sup style='color:red;'>*</sup> </label>
 
@@ -132,7 +148,7 @@
 
                                         <div class="margiv-top-10">
                                             <input type="submit" class="btn green-haze" value="Save Changes">
-                                            <a href="{{url('admin/dashboard')}}" class="btn default">
+                                            <a href="{{url('admin/manage-users')}}" class="btn default">
                                                 Cancel 
                                             </a>
                                         </div>
@@ -167,8 +183,8 @@
 
                                         </div>
                                         <div class="margiv-top-10">
-                                            <input type="submit" class="btn green-haze" value="Chnage Email">
-                                            <a href="{{url('admin/dashboard')}}" class="btn default">
+                                            <input type="submit" class="btn green-haze" value="Change Email">
+                                            <a href="{{url('admin/manage-users')}}" class="btn default">
                                                 Cancel 
                                             </a>
                                         </div>
@@ -208,11 +224,10 @@
                                                 <strong>{{ $errors->first('confirm_password') }}</strong>
                                             </span>
                                             @endif
-
                                         </div>
                                         <div class="margiv-top-10">
                                             <input type="submit" class="btn green-haze" value="Change Password">
-                                            <a href="{{url('admin/dashbaord')}}" class="btn default">
+                                            <a href="{{url('admin/manage-users')}}" class="btn default">
                                                 Cancel 
                                             </a>
                                         </div>

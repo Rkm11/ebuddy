@@ -12,7 +12,7 @@
                     <!-- BEGIN PAGE BREADCRUMB -->
 			<ul class="page-breadcrumb breadcrumb">
 				<li>
-					<a href="{{url('admin/dashbard')}}">Dashboard</a>
+					<a href="{{url('admin/dashboard')}}">Dashboard</a>
 					<i class="fa fa-circle"></i>
 				</li>
 				<li>
@@ -23,6 +23,11 @@
                         @if (session('update-role-status'))
                              <div class="alert alert-success">
                                    {{ session('update-role-status') }}
+                             </div>
+                        @endif
+                        @if (session('role-status'))
+                             <div class="alert alert-success">
+                                   {{ session('role-status') }}
                              </div>
                         @endif
                         
@@ -81,9 +86,9 @@
                                                                 <th>Description</th>
                                                                 <th>Created On</th>
                                                                 <th>Last Updated On</th>
-                                                                <th>Update</th>
-                                                                <th>Set Permission</th>
-                                                                <th>Delete</th>
+                                                                <th></th>
+                                                                <th style="text-align: center;">Action</th>
+                                                                <th></th>
                                                         </tr>
 							</thead>
                                                         
@@ -132,11 +137,11 @@ $(function() {
                   "orderable": false,
                    name: 'id'
                },
-            { data: 'id', name: 'id'},
-            { data: 'name', name: 'name'},
+            { data: 'id', name: 'role.id'},
+            { data: 'name', name: 'role.name'},
             { data: 'slug', name: 'slug' },
-            { data: 'description', name: 'description' },
-            { data: 'created_at', name: 'created_at' },
+            { data: 'description', name: 'role.description' },
+            { data: 'created_at', name: 'role.created_at' },
             { data: 'updated_at', name: 'updated_at' },
             {data:   "Update",
               render: function ( data, type, row ) {
@@ -166,7 +171,7 @@ $(function() {
             },
              {data:   "Delete",
               render: function ( data, type, row ) {
-                if(row.slug!='registered.user' && row.slug!='admin' )
+                if(row.slug!='registered.user' && row.slug!='admin' && row.slug!='subadminuser')
                 {
                     if ( type === 'display' ) {
                         

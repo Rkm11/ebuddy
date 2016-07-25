@@ -17,6 +17,11 @@
                 {{ session('password-update-success') }}
             	</div>
                 @endif
+               @if (session('profile-updated'))
+               <div class="alert alert-success">
+                {{ session('profile-updated') }}
+            	</div>
+                @endif
                 
                 <div class="panel-body">
                   

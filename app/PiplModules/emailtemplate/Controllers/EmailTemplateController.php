@@ -50,7 +50,7 @@ class EmailTemplateController extends Controller
 				// update it
 				
 				$email_template->subject = ($request->input('subject'));
-				$email_template->html_content = ($request->input('html_content'));
+				$email_template->html_content =($request->input('html_content'));
 				
 				$email_template->save();
 				

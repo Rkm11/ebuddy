@@ -13,7 +13,7 @@ class UserInformation extends Model
      * @var array
      */
     protected $hidden = ['facebook_id','twitter_id','google_id','linkedin_id'];
-      public function user()
+    public function user()
     {
             return $this->belongsTo('App\User');
     }

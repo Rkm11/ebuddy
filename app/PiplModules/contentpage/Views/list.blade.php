@@ -13,7 +13,7 @@
                     <!-- BEGIN PAGE BREADCRUMB -->
 			<ul class="page-breadcrumb breadcrumb">
 				<li>
-					<a href="{{url('admin/dashbard')}}">Dashboard</a>
+					<a href="{{url('admin/dashboard')}}">Dashboard</a>
 					<i class="fa fa-circle"></i>
 				</li>
 				<li>
@@ -81,8 +81,8 @@ $(function() {
       }],
         columns: [          
             { data: 'id', name: 'id'},
-            { data: 'page_title', name: 'Title'},
-             { data: 'page_alias', name: 'URL'},
+            { data: 'page_title', name: 'page_title'},
+             { data: 'page_alias', name: 'page_alias'},
             { data: 'Publish Status', 
                render: function ( data, type, row ) {
                

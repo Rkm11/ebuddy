@@ -12,13 +12,14 @@
                     <!-- BEGIN PAGE BREADCRUMB -->
 			<ul class="page-breadcrumb breadcrumb">
 				<li>
-					<a href="{{url('admin/dashbard')}}">Dashboard</a>
+					<a href="{{url('admin/dashboard')}}">Dashboard</a>
 					<i class="fa fa-circle"></i>
 				</li>
 				<li>
-					<a href="javascript:void(0)" class="active">Manage Blog Posts</a>
+					<a href="javascript:void(0)">Manage Blog Posts</a>
+					
 				</li>
-                </ul>
+                        </ul>
                      @if (session('status'))
                          <div class="alert alert-success">
                               {{ session('status') }}
@@ -27,24 +28,30 @@
                     <div class="row">
 				<div class="col-md-12">
 					<!-- BEGIN EXAMPLE TABLE PORTLET-->
-					<div class="portlet box solid grey-cascade">
+					<div class="portlet box grey-cascade">
 						<div class="portlet-title">
 							<div class="caption">
 								<i class="fa fa-list"></i>Manage Blog Posts
 							</div>
-							
-                            <div class="actions">
-                            <a href="{{url('/admin/blog-post/create')}}" id="sample_editable_1_new" class=" btn btn-default">
-											Add New <i class="fa fa-plus"></i>
-											</a>
-                            </div>
+							<div class="tools">
+								<a class="collapse" href="javascript:;" data-original-title="" title="">
+								</a>
+								<a class="config" data-toggle="modal" href="#portlet-config" data-original-title="" title="">
+								</a>
+								<a class="reload" href="javascript:;" data-original-title="" title="">
+								</a>
+								<a class="remove" href="javascript:;" data-original-title="" title="">
+								</a>
+							</div>
 						</div>
-                          <div class="portlet-body">
+                                                 <div class="portlet-body">
 							<div class="table-toolbar">
 								<div class="row">
 									<div class="col-md-6">
 										<div class="btn-group">
-											
+											<a href="{{url('/admin/blog-post/create')}}" id="sample_editable_1_new" class="btn green">
+											Add New <i class="fa fa-plus"></i>
+											</a>
 										</div>
 									</div>
 									
@@ -101,7 +108,7 @@ $(function() {
                   "orderable": false,
                   
                },
-           { data: 'id', name: 'id',visible:false},
+           { data: 'id', name: 'id'},
            { data: 'title', name: 'title'},
            { data: 'short_description', name: 'short_description'},
            { data: 'category', name: 'category'},

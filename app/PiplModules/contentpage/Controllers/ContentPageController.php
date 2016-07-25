@@ -38,9 +38,8 @@ class ContentPageController extends Controller
 	
 	public function showUpdateContentPageForm(Request $request,$page_id)
 	{
-	
-
-		$content_page = ContentPage::find($page_id);
+            
+                $content_page = ContentPage::find($page_id);
 		
 		if($content_page)
 		{
@@ -59,7 +58,11 @@ class ContentPageController extends Controller
 					$validate_response = Validator::make($data, [
                                             'page_alias' => 'required|unique:content_pages,page_alias,'.$content_page->id,
                                             'page_title' => 'required',
-                                            'page_content' => 'required'
+                                            'page_content' => 'required',
+                                            'page_seo_title' => 'required',
+                                            'page_meta_keywords' => 'required',
+                                            'page_meta_descriptions' => 'required'
+                                            
 
 				]);
 				

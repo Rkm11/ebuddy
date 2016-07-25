@@ -18,9 +18,7 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
-Route::get('/prof-register',function(){
-   return view('auth.register-prof');
-});
+
 Route::get('/redirect-dashboard', 'HomeController@toDashboard');
 Route::get('/user-profile', 'HomeController@toDashboard');
 

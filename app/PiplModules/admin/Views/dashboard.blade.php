@@ -41,7 +41,7 @@
 							</div>
 							<div class="status">
 								<div class="status-title">
-                                                                    <a href=""> Click Here to see more </a>
+                                                                    <a href="{{url('/admin/admin-users')}}"> Click Here to see more </a>
 								</div>
 								
 							</div>
@@ -69,7 +69,7 @@
 							</div>
 							<div class="status">
 								<div class="status-title">
-                                                                    <a href={{}}> Click Here to see more </a>
+                                                                    <a href="{{url('/admin/manage-users')}}"> Click Here to see more </a>
 								</div>
 								
 							</div>

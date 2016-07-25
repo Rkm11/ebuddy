@@ -170,7 +170,10 @@ class BlogController extends Controller
                                                         'title' => 'required',
                                                         'short_description' => 'required',
                                                         'description' => 'required',
-                                                        'photo'=>'sometimes|image'
+                                                        'photo'=>'sometimes|image',
+                                                        'seo_title'=>'required',
+                                                         'seo_keywords'=>'required',
+                                                        'seo_description'=>'required'
                                                  );
 
 							if($locale=="")
@@ -386,6 +389,9 @@ class BlogController extends Controller
                                                                     'url'=>'required|unique:posts,post_url',
                                                                     'photo'=>'sometimes|image',
                                                                     'allow_comments'=>'required',
+                                                                    'seo_title'=>'required',
+                                                                    'seo_keywords'=>'required',
+                                                                    'seo_description'=>'required'
                                                              )
                                                     );
 						

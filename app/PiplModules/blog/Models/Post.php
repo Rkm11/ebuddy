@@ -18,17 +18,17 @@ class Post extends Model
 	
 	public function category()
 	{
-		return $this->hasOne('App\PiplModules\Blog\Models\PostCategory','id','post_category_id');
+		return $this->hasOne('App\PiplModules\blog\Models\PostCategory','id','post_category_id');
 	}
 	
 	public function comments()
 	{
-		return $this->hasMany('App\PiplModules\Blog\Models\PostComment','post_id','id');	
+		return $this->hasMany('App\PiplModules\blog\Models\PostComment','post_id','id');	
 	}
 	
 	public function tags()
 	{
-		return $this->belongsToMany('App\PiplModules\Blog\Models\Tag');	
+		return $this->belongsToMany('App\PiplModules\blog\Models\Tag');	
 	}
 	
 	public function scopeSearch(Builder $query, $key=array(), $value='', $locale = null)

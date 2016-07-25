@@ -8,8 +8,8 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-use App\PiplModules\Roles\Traits\HasRoleAndPermission;
-use App\PiplModules\Roles\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
+use App\PiplModules\roles\Traits\HasRoleAndPermission;
+use App\PiplModules\roles\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
 
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,

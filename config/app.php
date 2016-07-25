@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Kolkata',
 
     /*
     |--------------------------------------------------------------------------
@@ -212,7 +212,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Datatables'=>Yajra\Datatables\Facades\Datatables::class,
         'Image' => Intervention\Image\Facades\Image::class,
-		'GlobalValues' => App\PiplModules\admin\Helpers\GlobalValues::class,
 
     ],
 

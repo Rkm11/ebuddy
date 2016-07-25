@@ -34,6 +34,9 @@ class TestimonialController extends Controller
 		$all_testimonials = Testimonial::all();
 		
                 return DataTables::of($all_testimonials)
+                    ->addColumn('status', function($testimonial){
+                     return ($testimonial->status>0)? 'Published': 'Unpublished';
+                    })
                         ->make(true);
 		return view("testimonial::list",["testimonials"=>$all_testimonials,'placeholder'=>$this->placeholder_img]);
 		

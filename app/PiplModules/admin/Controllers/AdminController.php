@@ -1,5 +1,5 @@
 <?php
-namespace App\PiplModules\Admin\Controllers;
+namespace App\PiplModules\admin\Controllers;
 use Session;
 use App\User;
 use App\UserInformation;
@@ -12,13 +12,12 @@ use Auth;
 use Mail;
 use Hash;
 use Datatables;
-use App\PiplModules\Roles\Models\Role;
-use App\PiplModules\Roles\Models\Permission;
-use App\PiplModules\Admin\Models\GlobalSetting;
-use App\PiplModules\Admin\Models\Country;
-use App\PiplModules\Admin\Models\State;
-use App\PiplModules\Admin\Models\City;
-use GlobalValues;
+use App\PiplModules\roles\Models\Role;
+use App\PiplModules\roles\Models\Permission;
+use App\PiplModules\admin\Models\GlobalSetting;
+use App\PiplModules\admin\Models\Country;
+use App\PiplModules\admin\Models\State;
+use App\PiplModules\admin\Models\City;
 use Storage;
 
 class AdminController extends Controller
@@ -92,9 +91,10 @@ class AdminController extends Controller
                       $validate_response = Validator::make($data_values, array(
                             'first_name' => 'required',
                             'last_name' => 'required',
-                            'gender' => 'required',
+                            'gender' => 'required'
+                           
                           
-                    ));
+                      ));
 
                    if($validate_response->fails())
                     {
@@ -117,6 +117,10 @@ class AdminController extends Controller
                       {
                         $arr_user_data->userInformation->gender = $data["gender"];
                       }
+                      if(isset($data["user_status"]))
+                      {
+                        $arr_user_data->userInformation->user_status = $data["user_status"];
+                      }
                       
                       if(isset($data["first_name"]))
                       {
@@ -135,10 +139,8 @@ class AdminController extends Controller
                       {
                         $arr_user_data->userInformation->user_mobile = $data["user_mobile"];
                       }
-                      
-
+                    
                        $arr_user_data->userInformation->save();
-
                       
                        $succes_msg="Your profile has been updated successfully!";
                        return redirect("admin/profile")->with("profile-updated",$succes_msg);
@@ -347,7 +349,7 @@ class AdminController extends Controller
                 return redirect("login")->with("issue-profile",$errorMsg);
         }
     }
-  protected function verifyUserEmail($activation_code)
+    protected function verifyUserEmail($activation_code)
     {
       $user_informations=UserInformation::where('activation_code', $activation_code)->get()->first();
       if($user_informations)
@@ -376,24 +378,26 @@ class AdminController extends Controller
             return redirect("admin/login")->with("login-error",$errorMsg);
       }
     }
-	public function listRegisteredUsers()
+    public function listRegisteredUsers()
 	{
          
 		return view("admin::list-users");
 	}
         
-        public function listRegisteredUsersData()
-	{
+    public function listRegisteredUsersData()
+    {
 		$all_users = UserInformation::all();
 		
-		$registered_users =  $all_users->reject(function ($user) {   return $user->user->hasRole('registered.user') === false || ($user->user_type===1) ; });
+		$registered_users =  $all_users->reject(function ($user) {   return ($user->user_type==1) ; });
 		
-               
-               return Datatables::of($registered_users)
+                return Datatables::of($registered_users)
              
                 
-                ->addColumn('name', function($regsiter_user){
-                     return $regsiter_user->first_name." ".$regsiter_user->last_name;
+                ->addColumn('first_name', function($regsiter_user){
+                     return $regsiter_user->first_name;
+                })
+                ->addColumn('last_name', function($regsiter_user){
+                     return $regsiter_user->last_name;
                 })
                 
                ->addColumn('email', function($regsiter_user){
@@ -444,23 +448,24 @@ class AdminController extends Controller
 		
 		if($arr_user_data)
 		{
-			
 			if($request->method() == "GET" )
 			{
                             
 			
 				$all_roles = Role::where('level',"<=",1)->where('slug','<>','superadmin')->get();
-				
 				return view("admin::edit-registered-user",array('user_info'=>$arr_user_data,'roles'=>$all_roles ));
 			}
 			elseif($request->method() == "POST")
 			{
+                          
 				$data = $request->all();
 				
 				$validate_response = Validator::make($data, array(
                                     'gender' => 'required',
                                     'first_name' => 'required',
-                                    'last_name' => 'required'
+                                    'last_name' => 'required',
+                                    'user_mobile' => 'numeric',
+                                    'user_status' => 'required|numeric'
 				)
                                
                                 );
@@ -482,6 +487,10 @@ class AdminController extends Controller
                                 {
                                   $arr_user_data->userInformation->gender = $data["gender"];
                                 }
+                                if(isset($data["user_status"]))
+                                {
+                                  $arr_user_data->userInformation->user_status = $data["user_status"];
+                                }
                       
                                 if(isset($data["first_name"]))
                                 {
@@ -500,11 +509,10 @@ class AdminController extends Controller
                                {
                                  $arr_user_data->userInformation->user_mobile = $data["user_mobile"];
                                }
-                              $arr_user_data->detachAllRoles();					
-                             $arr_user_data->attachRole('2');
+                          
                              $arr_user_data->userInformation->save();
-                             $succes_msg="User profile has been updated successfully!";
-                             return redirect("admin/update-registered-user/".$arr_user_data->id)->with("profile-updated",$succes_msg);
+                             $success_msg="User profile has been updated successfully!";
+                             return redirect("admin/update-registered-user/".$arr_user_data->id)->with("profile-updated",$success_msg);
                           }
                 }}
 		else
@@ -554,7 +562,7 @@ class AdminController extends Controller
                       $arr_user_data->userInformation->activation_code=$activation_code;
                       $arr_user_data->userInformation->save();   
 
-                    Mail::send('emailtemplate::admin-email-change',$arr_keyword_values, function ($message) use ($arr_user_data)  {
+                    Mail::send('emailtemplate::email-change',$arr_keyword_values, function ($message) use ($arr_user_data)  {
 
                                     $message->to( $arr_user_data->email)->subject("Email Changed Successfully!");
 
@@ -644,7 +652,7 @@ class AdminController extends Controller
 				{
 					$created_user = User::create(array(
                                         'email' => $data['email'],
-                                        'password' => bcrypt($data['password']),
+                                        'password' => ($data['password']),
                                         ));
 
 
@@ -747,12 +755,12 @@ class AdminController extends Controller
 				$data = $request->all();
 				
 				$validate_response = Validator::make($data, array(
-																	'email' => 'required|email|max:255|unique:users,email,'.$user_details->id,
-																	'gender' => 'required',
-																	'first_name' => 'required',
-																	'last_name' => 'required',
-																	'user_mobile' => 'required',
-				));
+                                 'email' => 'required|email|max:255|unique:users,email,'.$user_details->id,
+                                 'gender' => 'required',
+                                 'first_name' => 'required',
+                                 'last_name' => 'required',
+                                 'user_mobile' => 'numeric|digits_between:10,12',
+                            ));
 				
 				if($validate_response->fails())
 				{
@@ -778,7 +786,7 @@ class AdminController extends Controller
 					$user_details->userInformation->save();
 					
 					return redirect('admin/update-user/'.$user_details->id)
-                        ->with("update-user-status","User updated successfully");
+                                                    ->with("update-user-status","User updated successfully");
 				}
 				
 			}
@@ -912,6 +920,7 @@ class AdminController extends Controller
 	
 	public function updateRole(Request $request,$role_id)
 	{
+           
 			$role = Role::find($role_id);
 			
 			if($role)
@@ -1020,15 +1029,17 @@ class AdminController extends Controller
 				{
 					$role->detachAllPermissions();
 					$role->save();
-					
-					foreach($request->permission as $sel_permission)
-					{
-						$role->attachPermission($sel_permission);
-					}
+					if(count($request->permission)>0)
+                                        {
+                                            foreach($request->permission as $sel_permission)
+                                            {
+                                                    $role->attachPermission($sel_permission);
+                                            }
 					
 					$role->save();
+                                        }
 					
-						return redirect('admin/manage-roles')
+					return redirect('admin/manage-roles')
 							->with("set-permission-status","Role permissions has been updated successfully");
 					
 				}
@@ -1077,7 +1088,23 @@ class AdminController extends Controller
 	public function listGlobalSettingsData()
 	{
 			$global_settings = GlobalSetting::all();
-			return Datatables::collection($global_settings)->make(true);
+                        return Datatables::of($global_settings)
+                           ->addColumn('name', function($global){
+                                return $value= $global->name;
+                            })     
+                                
+                            ->addColumn('value', function($global){
+                                $value='';
+                                if($global->slug=='site-logo')
+                                {
+                                   $value='<img src="'.asset("/storage/global-settings/$global->value").'">';
+                                }else{
+                                 $value= $global->value;
+                                }
+                                return $value;
+                            })
+                          ->make(true);  
+			
 	}
 	
 	public function updateGlobalSetting(Request $request,$setting_id)
@@ -1145,14 +1172,20 @@ class AdminController extends Controller
 		$all_users = UserInformation::all();
 		
 		
-		$admin_users =  $all_users->reject(function ($user) {   return $user->user->level() > 1 || $user->user->hasRole('superadmin')|| ($user->user_type>1); });
+		$admin_users =  $all_users->reject(function ($user) {  return $user->user->hasRole('superadmin')|| ($user->user_type>1); });
              
               
                 return Datatables::of($admin_users)
              
-                ->addColumn('name', function($admin_users){
-                     return $admin_users->first_name." ".$admin_users->last_name;
+                
+                 
+                ->addColumn('first_name', function($regsiter_user){
+                     return $regsiter_user->first_name;
                 })
+                ->addColumn('last_name', function($regsiter_user){
+                     return $regsiter_user->last_name;
+                })
+                
                ->addColumn('email', function($admin_users){
                      return $admin_users->user->email;
                 })
@@ -1163,7 +1196,7 @@ class AdminController extends Controller
                      return ($admin_users ->user_status>0)? 'Active': 'Inactive';
                 })
                 ->addColumn('created_at', function($admin_users){
-                     return GlobalValues::formatDate($admin_users->user->created_at);
+                     return $admin_users->user->created_at;
                 })
                
                 ->make(true);
@@ -1193,6 +1226,8 @@ class AdminController extends Controller
                                     'first_name' => 'required',
                                     'last_name' => 'required',
                                     'role' => 'required|numeric',
+                                    'user_mobile' => 'numeric',
+                                    'user_status' => 'required|numeric',
 				),
 
                                 array(
@@ -1218,6 +1253,10 @@ class AdminController extends Controller
                                 if(isset($data["gender"]))
                                 {
                                   $arr_user_data->userInformation->gender = $data["gender"];
+                                }
+                                if(isset($data["user_status"]))
+                                {
+                                  $arr_user_data->userInformation->user_status = $data["user_status"];
                                 }
                       
                                 if(isset($data["first_name"]))
@@ -1290,7 +1329,7 @@ class AdminController extends Controller
 				{
 					$created_user = User::create(array(
                                         'email' => $data['email'],
-                                        'password' => bcrypt($data['password']),
+                                        'password' => ($data['password']),
                                         ));
 
 
@@ -1379,7 +1418,23 @@ class AdminController extends Controller
 	{
 		
 		$all_countries = Country::translatedIn(\App::getLocale())->get();
-		return Datatables::collection($all_countries)->make(true);
+		return Datatables::collection($all_countries)
+              
+                 ->addColumn('Language', function($country){
+                     $language='<button class="btn btn-sm btn-warning dropdown-toggle" type="button" id="langDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Another Language <span class="caret"></span> </button>
+                         <ul class="dropdown-menu multilanguage" aria-labelledby="langDropDown">';
+                    if(count(config("translatable.locales_to_display")))
+                    {
+                     foreach(config("translatable.locales_to_display") as $locale=>$locale_full_name)
+                     {
+                          if($locale != 'en')
+                          {
+                            $language.='<li class="dropdown-item"> <a href="update-language/'.$country->id.'/'.$locale.'">'.$locale_full_name.'</a></li>';
+                          }
+                     }
+                    }
+                    return $language;
+                 })->make(true);
 	
 	}
 	public function createCountry(Request $request)
@@ -1393,7 +1448,7 @@ class AdminController extends Controller
 						// validate and proceed
                                                  $data = $request->all();
                                                  $validate_response = Validator::make($data, array(
-                                                        'name' => 'required',
+                                                        'name' => 'required|unique:country_translations,name',
                                                    ));
 
                                                     if($validate_response->fails())
@@ -1434,7 +1489,7 @@ class AdminController extends Controller
 						// validate and proceed
 						$data = $request->all();
 						$validate_response = Validator::make($data, array(
-                                                    'name' => 'required',
+                                                    'name' => 'required|unique:country_translations,name,'.$translated_country->id,
                                                     ));
 							
 							if($validate_response->fails())
@@ -1483,10 +1538,10 @@ class AdminController extends Controller
 					{
 						// validate and proceed
 						$data = $request->all();
-									$validate_response = Validator::make($data, array(
-																				'name' => 'required',
-																				));
-							
+						$validate_response = Validator::make($data, array(
+                                                    'name' => 'required',
+                                                    ));
+
 							if($validate_response->fails())
 							{
 								return redirect()->back()->withErrors($validate_response)->withInput();
@@ -1502,7 +1557,7 @@ class AdminController extends Controller
 								
 								$translated_country->save();
 								
-								return redirect()->back()->with('update-country-status','Country updated successfully!');
+								return redirect('admin/countries/list')->with('update-country-status','Country updated successfully!');
 							}
 						
 					}
@@ -1592,7 +1647,8 @@ class AdminController extends Controller
 						// validate and proceed
                                                         $data = $request->all();
                                                         $validate_response = Validator::make($data, array(
-                                                        'name' => 'required',
+                                                         'name' => 'required|unique:state_translations,name',
+                                                      
                                                         'country' => 'required|numeric'
                                                         ));
 							
@@ -1637,8 +1693,9 @@ class AdminController extends Controller
 						// validate and proceed
 						$data = $request->all();
 						$validate_response = Validator::make($data, array(
-                                                        'name' => 'required',
-                                                        ));
+                                                        'name' => 'required|unique:state_translations,name,'.$translated_state->id,
+                                                         'country' => 'required|numeric'
+                                                       ));
 
                                                     if($validate_response->fails())
 							{
@@ -1788,7 +1845,7 @@ class AdminController extends Controller
 						// validate and proceed
 									$data = $request->all();
 									$validate_response = Validator::make($data, array(
-                                                                        'name' => 'required',
+                                                                        'name' => 'required|unique:city_translations,name',
                                                                         'state' => 'required|numeric',
                                                                         'country' => 'required|numeric',
                                                                         ));
@@ -1840,7 +1897,7 @@ class AdminController extends Controller
 						// validate and proceed
 						$data = $request->all();
                                                             $validate_response = Validator::make($data, array(
-                                                            'name' => 'required',
+                                                               'name' => 'required|unique:city_translations,name,'.$translated_city->id,
                                                             'state' => 'required',
                                                             'country' => 'required',
                                                             ));

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\UserInformation;
 use App\UserAddress;
-use App\PiplModules\Roles\Models\Role;
+use App\PiplModules\roles\Models\Role;
 use Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

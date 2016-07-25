@@ -1,7 +1,5 @@
 <?php
-
 namespace App\PiplModules\Middleware;
-
 use Closure;
 use Illuminate\Support\Facades\Auth;
 

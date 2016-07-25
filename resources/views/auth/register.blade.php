@@ -106,7 +106,7 @@
                                 <button type="submit" class="btn btn-primary" id="btn_register">
                                     <i class="fa fa-btn fa-user"></i>Register
                                 </button>
-                                <img id="btn_loader" style="display:none;" src="{{url('public/media/front/img/loader.gif')}}">
+                                <img id="btn_loader" style="display:none;" src="{{url('public/media/front/images/loader.gif')}}">
                             </div>
                         </div>
                     </form>

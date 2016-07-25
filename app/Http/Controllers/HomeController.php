@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Auth;
@@ -10,7 +11,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     /**
-     * Creates a new controller instance.
+     * Create a new controller instance.
      *
      * @return void
      */
@@ -58,8 +59,6 @@ class HomeController extends Controller
 				// some issue with the account activation. Redirect to login page.
 				
 				$is_register = $request->session()->pull('is_sign_up');	
-				
-			
 				if(Auth::user()->userInformation->user_status=="0")
 				{
 					if($is_register)

@@ -12,7 +12,7 @@
                     <!-- BEGIN PAGE BREADCRUMB -->
 			<ul class="page-breadcrumb breadcrumb">
 				<li>
-					<a href="{{url('admin/dashbard')}}">Dashboard</a>
+					<a href="{{url('admin/dashboard')}}">Dashboard</a>
 					<i class="fa fa-circle"></i>
 				</li>
 				<li>
@@ -123,24 +123,11 @@ $(function() {
                     }
                     return data;
                 },
-                  "orderable": false,
+                  orderable: false,
                   name: 'Action'
                   
             },
-             {data:   "Language",
-                 render: function ( data, type, row )
-                 {
-               
-                    if ( type === 'display' ) {
-                        
-                        return '<a class="btn btn-sm btn-primary" href="{{url("admin/update-global-setting")}}/'+row.id+'">Multi Language</a>';
-                    }
-                    return data;
-                },
-                  "orderable": false,
-                  name: 'Action'
-                  
-            },
+             {data:   "Language", orderable: false,name: 'Action'},
             {data:   "Delete",
               render: function ( data, type, row ) {
                

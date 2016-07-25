@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
-use App\PiplModules\EmailTemplate\Models\EmailTemplate;
+use App\PiplModules\emailtemplate\Models\EmailTemplate;
 use Illuminate\Contracts\Auth\PasswordBroker as PasswordBrokerContract;
 use Mail;
 

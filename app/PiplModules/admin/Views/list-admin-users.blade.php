@@ -8,13 +8,12 @@
 
     
 @section('content')
-
 <div class="page-content-wrapper">
 		<div class="page-content">
                     <!-- BEGIN PAGE BREADCRUMB -->
 			<ul class="page-breadcrumb breadcrumb">
 				<li>
-					<a href="{{url('admin/dashbard')}}">Dashboard</a>
+					<a href="{{url('admin/dashboard')}}">Dashboard</a>
 					<i class="fa fa-circle"></i>
 				</li>
 				<li>
@@ -22,7 +21,7 @@
 					
 				</li>
                         </ul>
-
+    
            @if (session('update-user-status'))
           <div class="alert alert-success">
                 {{ session('update-user-status') }}
@@ -74,7 +73,8 @@
 									<div class="cust-chqs">  <p><input type="checkbox" id="select_all_delete" ><label for="select_all_delete"></label>  </p></div>
                                                                 </th>
                                                                  <th>Id</th>
-                                                                 <th>Name</th>
+                                                                 <th>First Name</th>
+                                                                 <th>Last Name</th>
                                                                  <th>Email</th>
                                                                  <th>Role</th>
                                                                  <th>Status</th>
@@ -92,7 +92,6 @@
 <script>
 $(function() {
     $('#tbladminusers').DataTable({
-		pageLength:{{GlobalValues::get('per-page-record')}},
         processing: true,
         serverSide: true,
         ajax: {"url":'{{url("/admin/admin-users-data")}}',"complete":afterRequestComplete},
@@ -115,10 +114,11 @@ $(function() {
                   "orderable": false,
                   
                },
-            { data: 'id', name: 'id',visible:false},
-            { data: 'name', name: 'name'},
-            { data: 'email', name: 'email'},
-            { data: 'role', name: 'role'},
+            { data: 'id', name: 'id'},
+            { data: 'first_name', name: 'first_name',searchable: true},
+            { data: 'last_name', name: 'last_name',searchable: true},
+            { data: 'email', name: 'user.email',searchable: true},
+            { data: 'role', name: 'roles.name',searchable: true},
             { data: 'status', name: 'status'},
            { data: 'created_at', name: 'created_at' },
        

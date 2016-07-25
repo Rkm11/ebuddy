@@ -80,10 +80,10 @@ function deleteAll(path)
                           {
                             if(data.success=="1")
                             {
-                                alert(data.msg);
+                              
                               
                             }
-                             window.location.reload();
+                           
                             
                           }
                           
@@ -91,6 +91,8 @@ function deleteAll(path)
                     }
 
                 });
+                 alert("Selected records has been deleted successfully.");
+                  window.location.reload();
             }
         }
 }

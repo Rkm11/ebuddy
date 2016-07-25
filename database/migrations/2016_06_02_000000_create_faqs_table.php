@@ -17,7 +17,7 @@ class CreateFaqsTable extends Migration
             Schema::create('faq_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('created_by')->unsigned()->index()->nullable();
-            //$table->integer('parent_id')->unsigned();
+            $table->string('cat_url',250);
             $table->integer('level');
             NestedSet::columns($table);
             $table->foreign('created_by')->references('id')->on('users')->onDelete('set null')->onUpdate('set null');

@@ -12,7 +12,7 @@
                     <!-- BEGIN PAGE BREADCRUMB -->
 			<ul class="page-breadcrumb breadcrumb">
 				<li>
-					<a href="{{url('admin/dashbard')}}">Dashboard</a>
+					<a href="{{url('admin/dashboard')}}">Dashboard</a>
 					<i class="fa fa-circle"></i>
 				</li>
 				<li>
@@ -111,7 +111,7 @@ $(function() {
            { data: 'name', name: 'name'},
            { data: 'user_description', name: 'user_description'},
            { data: 'description', name: 'description'},
-            { data: 'updated_at', name: 'updated_at' },
+            { data: 'status', name: 'status' },
             {data:   "Update",
               render: function ( data, type, row ) {
                

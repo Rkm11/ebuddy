@@ -1,18 +1,14 @@
 @extends(config("piplmodules.back-view-layout-location"))
-
 @section("meta")
-
 <title>Manage Global Settings</title>
-
 @endsection
-
 @section('content')
 <div class="page-content-wrapper">
 		<div class="page-content">
                     <!-- BEGIN PAGE BREADCRUMB -->
 			<ul class="page-breadcrumb breadcrumb">
 				<li>
-					<a href="{{url('admin/dashbard')}}">Dashboard</a>
+					<a href="{{url('admin/dashboard')}}">Dashboard</a>
 					<i class="fa fa-circle"></i>
 				</li>
 				<li>
@@ -79,19 +75,7 @@ $(function() {
            
            { data: 'id', name: 'id'},
            { data: 'name', name: 'name'},
-           {data:   "value",
-              render: function ( data, type, row ) {
-               
-                    if ( jQuery.inArray('image',row.validate.split('|')) != -1) {
-                        
-                        return '<img src="{{asset("public/storage/global-settings")}}/'+row.value+'">';
-                    }
-                    return data;
-                },
-                  "orderable": false,
-                  name: 'value'
-                  
-            },
+           {data:   "value",name:'value'},
             { data: 'updated_at', name: 'updated_at' },
             {data:   "Action",
               render: function ( data, type, row ) {

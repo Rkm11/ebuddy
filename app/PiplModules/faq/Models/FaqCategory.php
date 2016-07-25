@@ -16,7 +16,7 @@ class FaqCategory extends Model
 	
 	 public function parentCat()
 	 {
-		return $this->belongsTo('App\PiplModules\Faq\Models\FaqCategory','parent_id','id');
+		return $this->belongsTo('App\PiplModules\faq\Models\FaqCategory','parent_id','id');
 	 }
 	
 }

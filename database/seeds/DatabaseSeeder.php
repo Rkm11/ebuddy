@@ -158,7 +158,7 @@ class DatabaseSeeder extends Seeder
 		DB::table('email_templates')->insert([
                 'subject' => 'Reset your password',
                 'locale' => 'en',
-                'template_keywords' => '|USER_NAME|,|RESET_LINK|',
+                'template_keywords' => '{{$RESET_LINK}},{{$USER_NAME}}',
                 'template_key' => 'request-reset-password',
                 'html_content'=>'<html><body>Hello |USER_NAME|, Please see below link to reset your password.<br><br><a href="|REST_LINK|">|REST_LINK|</a><br></br>Thanks,<br>PIPL Lib Team'
             ]);

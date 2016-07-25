@@ -33,7 +33,7 @@
         <div class="row">
         @if($post->post_image)
        <div class="col-md-1 text-center">
-            	<img src="{{ asset('storage/blog/thumbnails/'.$post->post_image) }}" class="img-responsive thumbnail" />
+            	<img src="{{asset('storage/blog/thumbnails/'.$post->post_image)}}" class="img-responsive thumbnail" />
         </div>
           @endif
         <div class="@if($post->post_image) col-md-11 @else col-md-12 @endif">

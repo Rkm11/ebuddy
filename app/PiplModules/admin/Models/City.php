@@ -1,6 +1,5 @@
 <?php
 namespace App\PiplModules\Admin\Models;
-
 use Illuminate\Database\Eloquent\Model;
 
 class City extends Model 
@@ -12,11 +11,11 @@ class City extends Model
 	
 	public function state()
 	{
-		return $this->belongsTo('App\PiplModules\Admin\Models\State');
+		return $this->belongsTo('App\PiplModules\admin\Models\State');
 	}
         public function country()
 	{
-		return $this->belongsTo('App\PiplModules\Admin\Models\Country');
+		return $this->belongsTo('App\PiplModules\admin\Models\Country');
 	}
 
 }
