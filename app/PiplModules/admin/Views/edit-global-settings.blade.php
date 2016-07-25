@@ -71,7 +71,7 @@
                                     </span>
                                 @endif
                           </div>
-                       <img src="{{storage:get("/storage/global-settings/".$global->value)}}"
+                   
                       </div>
                     <div class="form-group">
                          <div class="col-md-12">   
