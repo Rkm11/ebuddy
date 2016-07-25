@@ -64,7 +64,29 @@ php artisan migrate
 php artisan db:seed
 
 
+## Step6
+Now run below commands to crear symbolic link: 
+
+Windows
+
+mklink /J storage c:\wamp\www\laravel-demo\storage\app\public
+(change 'laravel-demo' as per your folder/directory name)
 
 
+LINUX
+
+sudo ln -s /var/www/laravel-demo/storage /var/www/laravel-demo/storage/app/public/ 
+(change 'laravel-demo' as per your folder/directory name)
+
+Note: Once you upload project on 182 you have to hit below php page to maintain symbolic link and before hitting the page please make changes accordingly.
+
+The command will be -
+symlink("/var/www/html/laravel-demo/storage/app/public", "storage");
+So please change your folder name on 182 server (from 'LARAVEL_LIBRARY_2016_JUNE' to 'your folder name')
+
+
+So that's it. Run your project.
+
+If of you have any query please discuss with us.
 
 
