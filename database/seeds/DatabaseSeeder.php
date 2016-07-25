@@ -16,20 +16,26 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Super Admin',
                 'slug' => 'superadmin',
                 'description' => 'Full Priviliges',
-                'level'=>'1'    
+                'level'=>'1',
+				'created_at'=>date('Y-m-d h:i:s'),
+				'updated_at'=>date('Y-m-d h:i:s')				
             ]);
 			
             DB::table('roles')->insert([
                 'name' => 'Registered Users',
-		'slug' => 'registered.user',
-		'description' => 'For Registered Users',
-                'level'=>'2' 
+				'slug' => 'registered.user',
+				'description' => 'For Registered Users',
+                'level'=>'2' ,
+				'created_at'=>date('Y-m-d h:i:s'),
+				'updated_at'=>date('Y-m-d h:i:s')	
             ]);
             DB::table('roles')->insert([
                 'name' => 'Admin Users',
-		'slug' => 'subadminuser',
-		'description' => 'For Admin Users',
-                'level'=>'1' 
+				'slug' => 'subadminuser',
+				'description' => 'For Admin Users',
+                'level'=>'1',
+				'created_at'=>date('Y-m-d h:i:s'),
+				'updated_at'=>date('Y-m-d h:i:s')	
             ]);
 	 //end
             
@@ -114,9 +120,10 @@ class DatabaseSeeder extends Seeder
           
         //inserting super admin details in user table
             DB::table('users')->insert([
-                'email' => 'anuj@panaceatek.com',
-		'password' => bcrypt('Pass@12345'),
+                'email' => 'hancy@panaceatek.com',
+		        'password' => bcrypt('Pass@12345'),
                 'created_at'=>date('Y-m-d h:i:s'),
+				'updated_at'=>date('Y-m-d h:i:s')
             ]);
 			
              DB::table('user_informations')->insert([
@@ -125,60 +132,67 @@ class DatabaseSeeder extends Seeder
                 'user_id' => '1',
                 'user_status'=>'1',
                 'user_type'=>'1',
-                'gender'=>'3'
+                'gender'=>'3',
+				'created_at'=>date('Y-m-d h:i:s'),
+				'updated_at'=>date('Y-m-d h:i:s')
             ]);
 		
             DB::table('role_user')->insert([
                     'role_id' => '1',
-                    'user_id' => '1'
+                    'user_id' => '1',
+					'created_at'=>date('Y-m-d h:i:s'),
+					'updated_at'=>date('Y-m-d h:i:s')
             ]);
             
 	   //inserting Default values in global Setting	
-		DB::table('global_settings')->insert(['name'=>'Site Email','value'=>'anuj@panaceatek.com','validate'=>'required|email','slug'=>'site-email']);
-		DB::table('global_settings')->insert(['name'=>'Site Title','value'=>'p996','validate'=>'required','slug'=>'site-title']);
-		DB::table('global_settings')->insert(['name'=>'Contact Email','value'=>'sofia@panaceatek.com','validate'=>'required|email','slug'=>'contact-email']);
-		DB::table('global_settings')->insert(['name'=>'Date Format','value'=>'Y-m-d H:i:s','validate'=>'required','slug'=>'date-format']);
-		DB::table('global_settings')->insert(['name'=>'Per Page Records','value'=>'10','validate'=>'required|numeric','slug'=>'per-page-record']);
-		DB::table('global_settings')->insert(['name'=>'Facebook Page Link','value'=>'http://www.facebook.com/','validate'=>'required|url','slug'=>'facebook-link']);
-		DB::table('global_settings')->insert(['name'=>'Youtube Page Link','value'=>'http://youtube.com/','validate'=>'required|url','slug'=>'youtube-link']);
-		DB::table('global_settings')->insert(['name'=>'Instragram Page Link','value'=>'https://instagram.com/','validate'=>'required|url','slug'=>'instagram-link']);
-		DB::table('global_settings')->insert(['name'=>'Twitter Page Link','value'=>'http://twitter.com','validate'=>'required|url','slug'=>'twitter-link']);
-		DB::table('global_settings')->insert(['name'=>'Flicker Page Link','value'=>'https://www.flickr.com/','validate'=>'required|url','slug'=>'flickr-link']);
-		DB::table('global_settings')->insert(['name'=>'Tumblr Page Link','value'=>'https://www.tumblr.com/','validate'=>'required|url','slug'=>'tumblr-link']);
-		DB::table('global_settings')->insert(['name'=>'Google+ Page Link','value'=>'https://plus.google.com/','validate'=>'required|url','slug'=>'google-link']);
-		DB::table('global_settings')->insert(['name'=>'Zip Code','value'=>'71423','validate'=>'required','slug'=>'zip-code']);
-		DB::table('global_settings')->insert(['name'=>'Street','value'=>'pune','validate'=>'required','slug'=>'street']);
-		DB::table('global_settings')->insert(['name'=>'City','value'=>'pune','validate'=>'required','slug'=>'city']);
-		DB::table('global_settings')->insert(['name'=>'Address','value'=>'Salunkhe vihar, Wanowari','validate'=>'required','slug'=>'address']);
-		DB::table('global_settings')->insert(['name'=>'Contact Us Page Short Description','value'=>'Please use below section to contact us ','validate'=>'required','slug'=>'contact-us-page-short-descripton-text']);
-		DB::table('global_settings')->insert(['name'=>'Phone No','value'=>'-8120247546','validate'=>'required','slug'=>'phone-no']);
-		DB::table('global_settings')->insert(['name'=>'Site Logo','value'=>'1450941897.png','validate'=>'required|image','slug'=>'site-logo']);
+		DB::table('global_settings')->insert(['name'=>'Site Email','value'=>'anuj@panaceatek.com','validate'=>'required|email','slug'=>'site-email','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);
+		DB::table('global_settings')->insert(['name'=>'Site Title','value'=>'p996','validate'=>'required','slug'=>'site-title','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);
+		DB::table('global_settings')->insert(['name'=>'Contact Email','value'=>'sofia@panaceatek.com','validate'=>'required|email','slug'=>'contact-email','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);
+		DB::table('global_settings')->insert(['name'=>'Date Format','value'=>'Y-m-d H:i:s','validate'=>'required','slug'=>'date-format','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);
+		DB::table('global_settings')->insert(['name'=>'Per Page Records','value'=>'10','validate'=>'required|numeric','slug'=>'per-page-record','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);
+		DB::table('global_settings')->insert(['name'=>'Facebook Page Link','value'=>'http://www.facebook.com/','validate'=>'required|url','slug'=>'facebook-link','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);
+		DB::table('global_settings')->insert(['name'=>'Youtube Page Link','value'=>'http://youtube.com/','validate'=>'required|url','slug'=>'youtube-link','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);
+		DB::table('global_settings')->insert(['name'=>'Instragram Page Link','value'=>'https://instagram.com/','validate'=>'required|url','slug'=>'instagram-link','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);
+		DB::table('global_settings')->insert(['name'=>'Twitter Page Link','value'=>'http://twitter.com','validate'=>'required|url','slug'=>'twitter-link','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);
+		DB::table('global_settings')->insert(['name'=>'Flicker Page Link','value'=>'https://www.flickr.com/','validate'=>'required|url','slug'=>'flickr-link','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);
+		DB::table('global_settings')->insert(['name'=>'Tumblr Page Link','value'=>'https://www.tumblr.com/','validate'=>'required|url','slug'=>'tumblr-link','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);
+		DB::table('global_settings')->insert(['name'=>'Google+ Page Link','value'=>'https://plus.google.com/','validate'=>'required|url','slug'=>'google-link','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);
+		DB::table('global_settings')->insert(['name'=>'Zip Code','value'=>'71423','validate'=>'required','slug'=>'zip-code','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);
+		DB::table('global_settings')->insert(['name'=>'Street','value'=>'pune','validate'=>'required','slug'=>'street','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);
+		DB::table('global_settings')->insert(['name'=>'City','value'=>'pune','validate'=>'required','slug'=>'city','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);
+		DB::table('global_settings')->insert(['name'=>'Address','value'=>'Salunkhe vihar, Wanowari','validate'=>'required','slug'=>'address','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);
+		DB::table('global_settings')->insert(['name'=>'Contact Us Page Short Description','value'=>'Please use below section to contact us ','validate'=>'required','slug'=>'contact-us-page-short-descripton-text','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);
+		DB::table('global_settings')->insert(['name'=>'Phone No','value'=>'-8120247546','validate'=>'required','slug'=>'phone-no','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);
+		DB::table('global_settings')->insert(['name'=>'Site Logo','value'=>'1450941897.png','validate'=>'required|image','slug'=>'site-logo','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);
 		
            //inserting Default values in email template	    
 		DB::table('email_templates')->insert([
                 'subject' => 'Reset your password',
                 'locale' => 'en',
-                'template_keywords' => '{{$RESET_LINK}},{{$USER_NAME}}',
+                'template_keywords' => '{{$RESET_LINK}},{{$USER_NAME}},{{$SITE_TITLE}}',
                 'template_key' => 'request-reset-password',
-                'html_content'=>'<html><body>Hello |USER_NAME|, Please see below link to reset your password.<br><br><a href="|REST_LINK|">|REST_LINK|</a><br></br>Thanks,<br>PIPL Lib Team'
+                'html_content'=>'<html><body>Hello |USER_NAME|, Please see below link to reset your password.<br><br><a href="|REST_LINK|">|REST_LINK|</a><br></br>Thanks,<br>{{$SITE_TITLE}}',
+				'created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")
             ]);
-            DB::table('email_templates')->insert([
+			
+       DB::table('email_templates')->insert([
                 'subject' => 'Registraion completed successfully',
                 'locale' => 'en',
-                'template_keywords' => '{{$VERIFICATION_LINK}},{{$FIRST_NAME}}, {{$LAST_NAME}}',
+                'template_keywords' => '{{$VERIFICATION_LINK}},{{$FIRST_NAME}}, {{$LAST_NAME}},{{$SITE_TITLE}}',
                 'template_key' => 'registration-successfull',
                 'html_content'=>'<html><body>Hello {{$FIRST_NAME}} {{$LAST_NAME}},   <br>
                                 Your registration has been completed successfully!
 
-                                Please activate your account by clicking on the link provided belowground
+                                Please activate your account by clicking on the link provided below link
 
                                {{$VERIFICATION_LINK}}
-                                Thanks,<br>PIPL Lib Team'
-            ]);
-            DB::table('email_templates')->insert([
+                                Thanks,<br>{{$SITE_TITLE}}','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")
+        ]);
+		
+        DB::table('email_templates')->insert([
                 'subject' => 'Registraion completed successfully as an Admin user',
                 'locale' => 'en',
-                'template_keywords' => '{{$VERIFICATION_LINK}},{{$FIRST_NAME}}, {{$LAST_NAME}}',
+                'template_keywords' => '{{$VERIFICATION_LINK}},{{$FIRST_NAME}}, {{$LAST_NAME}},{{$SITE_TITLE}}',
                 'template_key' => 'admin-registration-successfull',
                 'html_content'=>'<html><body>Hello {{$FIRST_NAME}} {{$LAST_NAME}},   <br>
                                 Your registration has been completed successfully!
@@ -186,51 +200,52 @@ class DatabaseSeeder extends Seeder
                                 Please activate your account by clicking on the link provided belowground
 
                                {{$VERIFICATION_LINK}}
-                                Thanks,<br>PIPL Lib Team'
+                                Thanks,<br>{{$SITE_TITLE}}','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")
             ]);
           
             DB::table('email_templates')->insert([
             'subject' => 'Email has been updated',
             'locale' => 'en',
-            'template_keywords' => '{{$VERIFICATION_LINK}},{{$FIRST_NAME}}, {{$LAST_NAME}}',
+            'template_keywords' => '{{$VERIFICATION_LINK}},{{$FIRST_NAME}}, {{$LAST_NAME}},{{$SITE_TITLE}}',
             'template_key' => 'email-change',
             'html_content'=>'<html><body>Hello {{$FIRST_NAME}} {{$LAST_NAME}}, Your email has been changed successfully. Please verify your email by clicking on the link provided belowground
                                 <br><br><a href="{{$VERIFICATION_LINK}}">{{$VERIFICATION_LINK}}</a><br></br>
                          Thanks,
-                         Code Library Team'
+                         Code Library Team','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")
             ]);
             
             DB::table('email_templates')->insert([
             'subject' => 'Email has been updated',
             'locale' => 'en',
-            'template_keywords' => '{{$VERIFICATION_LINK}},{{$FIRST_NAME}}, {{$LAST_NAME}}',
+            'template_keywords' => '{{$VERIFICATION_LINK}},{{$FIRST_NAME}}, {{$LAST_NAME}},{{$SITE_TITLE}}',
             'template_key' => 'admin-email-change',
             'html_content'=>'<html><body>Hello {{$FIRST_NAME}} {{$LAST_NAME}}, Your email has been changed successfully. Please verify your email by clicking on the link provided belowground
                                 <br><br><a href="{{$VERIFICATION_LINK}}">{{$VERIFICATION_LINK}}</a><br></br>
                          Thanks,
-                         Code Library Team'
+                         Code Library Team','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")
             ]);
            DB::table('email_templates')->insert([
             'subject' => 'Contact Request',
             'locale' => 'en',
-            'template_keywords' => '{{$USER_NAME}},{{$USER_EMAIL}}, {{$USER_PHONE}},  {{$CATEGORY}}, {{$SUBJECT}}, {{$MESSAGE}}, {{$REFERENCE}}',
+            'template_keywords' => '{{$USER_NAME}},{{$USER_EMAIL}}, {{$USER_PHONE}},  {{$CATEGORY}}, {{$SUBJECT}}, {{$MESSAGE}}, {{$REFERENCE}},{{$SITE_TITLE}}',
             'template_key' => 'contact-request',
             'html_content'=>'<p>Dear Admin, A user {{$USER_NAME}} has submit an contact request. Please check admin Panel and manage accordingly Below are the contact request details:- Name: {{$USER_NAME}} Email: {{$USER_EMAIL}} Phone: {{$USER_PHONE}} Category: {{$CATEGORY}} SUBJECT: {{$SUBJECT}} Message: {{$MESSAGE}} REFERENCE No: {{$REFERENCE}} Thanks,<br />
-                                PIPL Lib Team</p>'
+                                {{$SITE_TITLE}}</p>','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")
             ]);
             DB::table('email_templates')->insert([
             'subject' => 'Contact Request Reply',
             'locale' => 'en',
             'template_keywords' => '{!! $MESSAGE !!}',
             'template_key' => 'contact-request-reply',
-            'html_content'=>'<html><body style="font-family:Arial, Helvetica, sans-serif;font-size:12px;">{!! $MESSAGE !!}</body></html>'
+            'html_content'=>'<html><body style="font-family:Arial, Helvetica, sans-serif;font-size:12px;">{!! $MESSAGE !!}</body></html>','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")
             ]);
                
           //inserting Default values in cms template	           
            DB::table('content_pages')->insert([
                 'page_alias' => 'about-us',
                 'page_status' => '1',
-                'created_by' => '1'
+                'created_by' => '1',
+				'created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")
             ]);
            
             DB::table('content_page_translations')->insert([
@@ -243,6 +258,7 @@ class DatabaseSeeder extends Seeder
                 'page_meta_descriptions' => 'About Us',
                 'locale' => 'en',
                 'content_page_id' => '1',
+				'created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")
             ]);
 		
     }

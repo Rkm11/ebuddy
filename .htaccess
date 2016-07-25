@@ -12,7 +12,15 @@
     # Handle Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond  expr "! %{REQUEST_FILENAME} -strmatch '*storageasset*'"
     RewriteRule ^ index.php [L]
+	
+	RewriteBase /laravel-pipl-lib/
+	RewriteCond  expr " %{REQUEST_FILENAME} -strmatch '*storageasset*'"
+	RewriteRule ^storageasset/(.+)/(.+)/(.+)/(.+)$ storage/app/public/$1/$2/$3/$4
+	RewriteRule ^storageasset/(.+)/(.+)/(.+)$ storage/app/public/$1/$2/$3
+	RewriteRule ^storageasset/(.+)/(.+)$ storage/app/public/$1/$2
+	RewriteRule ^storageasset/(.+)$ storage/app/public/$1
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
