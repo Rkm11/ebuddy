@@ -28,6 +28,8 @@ php artisan key:generate
 
 
 ## Step4
+First you have create a database in phpmyadmin.
+
 Now change the database settings in ".env" file and config/datatbase.php file.
 
 E.g: .env
