@@ -5,7 +5,7 @@ Route::group(array('module'=>'Admin', 'namespace' => 'App\PiplModules\admin\Cont
 	// Admin Login Profile and logout
     
 	Route::get("/admin/login","AdminController@showLogin");
-	Route::get("/admin","AdminController@showDashboard")->middleware('level:1');
+	Route::get("/admin","AdminController@showLogin");
         
 	Route::get("/admin/dashboard","AdminController@showDashboard")->middleware('level:1');
         Route::get("/admin/profile","AdminController@adminProfile")->middleware('level:1');

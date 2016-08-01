@@ -38,11 +38,12 @@
                             </div>
                         </div>
                        
-                      
+                      @if(isset($user_info->userAddress->suburb))
                         <div class="form-group{{ $errors->has('suburb') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Suburb</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="suburb" value="{{old('suburb',$user_info->userAddress->suburb)}}">
+
+                                <input type="text" class="form-control" name="suburb" value="{{ old('suburb',$user_info->userAddress->suburb )}}">
                                  @if ($errors->has('suburb'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('suburb') }}</strong>
@@ -50,10 +51,12 @@
                                 @endif
                             </div>
                         </div>
+						@endif
+						 @if(isset($user_info->userAddress->zipcode))
                         <div class="form-group{{ $errors->has('post_code') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Post Code</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="zipcode" value="{{old('zipcode',$user_info->userAddress->zipcode)}}">
+                                <input type="text" class="form-control" name="zipcode" value="{{ old('zipcode',$user_info->userAddress->zipcode or '')}}">
                                  @if ($errors->has('zipcode'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('zipcode') }}</strong>
@@ -61,7 +64,7 @@
                                 @endif
                             </div>
                         </div>
-                      
+                      @endif
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
