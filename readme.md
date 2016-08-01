@@ -4,13 +4,13 @@ Please follow the belor steps to configuring the code library at your system.
 
 
 ## Step1
-Open your command propmt/terminql . Navigate to your working directory e.g=> /var/www/clonned directory
+Open your command prompt/terminal . Navigate to your working directory e.g=> /var/www (Don't create a new folder, Clone command will create a folder automatically)
 
-Clone the laravel library using below command
+Clone the laravel library using below command-
 
-git clone http://192.168.2.200/administrator/laravel-pipl-lib.git
+"git clone http://192.168.2.200/administrator/laravel-pipl-lib.git"
 
-
+After this, please navigate to newly create folder- E.g=> pipl-laravel-lib
 
 ## Step2
  No you need to run following command.
