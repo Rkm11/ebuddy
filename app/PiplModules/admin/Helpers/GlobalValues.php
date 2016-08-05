@@ -6,13 +6,11 @@ use Cache;
 use Carbon\Carbon;
 class GlobalValues
 {
-	
+	//this function is used to retrun all Global setting values.
 	public function getAll()
 	{
 		$glabal_values = GlobalSetting::all();
 	}
-	
-	
 	
 	public static function get($slug)
 	{
@@ -26,7 +24,7 @@ class GlobalValues
 				$expiresAt = Carbon::now()->addMinutes(10);
 				$setting = GlobalSetting::where('slug',$slug)->get();
 		
-				if($setting)
+				if($setting!==null && $setting!="[]")
 				{
 					$value = $setting->first()->value;
 					Cache::put($slug,$value ,$expiresAt);

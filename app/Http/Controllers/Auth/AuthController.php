@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 use App\User;
 use App\UserInformation;
@@ -11,6 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Mail;
+use GlobalValues;
 
 class AuthController extends Controller
 {
@@ -77,9 +77,11 @@ class AuthController extends Controller
     }
     protected function create(array $data)
     {
-       
-
-                //Variable Declarations
+             //getting from global setting
+              $site_email=GlobalValues::get('site-email');
+              $site_title=GlobalValues::get('site-title');
+            
+              //Variable Declarations
                 $arr_userinformation = array();  
                 $arr_useraddress = array();  
                 $hasAddress=0;
@@ -217,9 +219,9 @@ class AuthController extends Controller
                 $updated_user_info->activation_code=$activation_code;
                 $updated_user_info->save();   
                 
-                Mail::send('emailtemplate::registration-successfull',$arr_keyword_values, function ($message) use ($created_user)  {
+                Mail::send('emailtemplate::registration-successfull',$arr_keyword_values, function ($message) use ($created_user,$site_email,$site_title)  {
 				
-                    $message->to( $created_user->email, $created_user->name )->subject("Registration Successful!");
+                    $message->to( $created_user->email, $created_user->name )->subject("Registration Successful!")->from($site_email,$site_title);
 				
 		});
                 
