@@ -29,7 +29,14 @@ class HomeController extends Controller
     {
         return view('home');		
     }
-	
+    public function permissionDenied() {
+
+            $arr_user= Auth::user();
+            $arr_user_data=$arr_user->userInformation;
+            return view('permission_denied',array("user_info"=>$arr_user_data));
+
+    }
+		
 	/**
 	*
 	*  Checks, whether user has role of administrator. If yes, then forwards to Admin Panel. If user registered from front end, then checks it's email verified status 
@@ -43,7 +50,19 @@ class HomeController extends Controller
             
 		if(Auth::user()->isSuperadmin() || Auth::user()->isAdmin() || Auth::user()->userInformation->user_type=='1')
 		{
-			return redirect("admin/dashboard");
+                    if(Auth::user()->userInformation->user_status=="1")
+			{   
+                            return redirect("admin/dashboard");exit;
+                        }
+                        elseif(Auth::user()->userInformation->user_status=="0")
+			{
+                            $errorMsg  = "We found your account is not yet verified. Kindly see the verification email, sent to your email address, used at the time of registration.";
+                        }elseif(Auth::user()->userInformation->user_status=="2")
+                        {
+                            $errorMsg = "We apologies, your account is blocked by administrator. Please contact to administrator for further details.";
+                        }
+                        Auth::logout();
+			return redirect("/admin/login")->with("login-error",$errorMsg);
 		}
 		// he is not admin. check whether he has activated, ask him to verify the account, otherwise forward to profile page.
 		else

@@ -36,17 +36,33 @@ class VerifyPermission
      */
     public function handle($request, Closure $next, $permission)
     {
-        if ($this->auth->check() && ($this->auth->user()->can($permission) || $this->auth->user()->isSuperadmin())) {
-            return $next($request);
-        }
+        if ($this->auth->check() &&($this->auth->user()->can($permission) || $this->auth->user()->isSuperadmin()))
+         {
 
-            if(!$this->auth->check())
+             if($this->auth->user()->userInformation->user_status==0)
+             {
+                 $errorMsg = "We found your account is not yet verified. Kindly see the verification email, sent to your email address, used at the time of registration.";
+                  Auth::logout();
+                return redirect("/admin/login")->with("login-error",$errorMsg);
+             }elseif($this->auth->user()->userInformation->user_status==2)
+             {
+                 $errorMsg = "We apologies, your account is blocked by administrator. Please contact to administrator for further details.";
+                 Auth::logout();
+                return redirect("/admin/login")->with("login-error",$errorMsg);
+             }else{
+                return $next($request);
+
+             }
+         }
+        if(!$this->auth->check())
             {
-		   return redirect("admin/login");   
+		 return redirect("admin/login");   
             }
             else
             {
-                    abort(403);
+					
+		 return redirect("permission/denied");  
+                  abort(403);
             }
     }
 }

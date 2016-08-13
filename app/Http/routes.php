@@ -16,9 +16,8 @@ Route::get('/', function () {
 });
 
 Route::auth();
-
 Route::get('/home', 'HomeController@index');
-
+Route::get('/permission/denied', 'HomeController@permissionDenied');
 Route::get('/redirect-dashboard', 'HomeController@toDashboard');
 Route::get('/user-profile', 'HomeController@toDashboard');
 
