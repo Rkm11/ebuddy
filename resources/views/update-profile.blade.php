@@ -51,8 +51,8 @@
                                 @endif
                             </div>
                         </div>
-						@endif
-						 @if(isset($user_info->userAddress->zipcode))
+			@endif
+			 @if(isset($user_info->userAddress->zipcode))
                         <div class="form-group{{ $errors->has('post_code') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Post Code</label>
                             <div class="col-md-6">

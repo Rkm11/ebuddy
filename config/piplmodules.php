@@ -8,7 +8,8 @@ return [
 		'testimonial',
 		'blog',
                 'category',
-                'socialconnect',   
+                'socialconnect',  
+				'ims',	
 		'contentpage', // It must include always in last
     ),
 	'front-view-layout-location'=>'layouts.app',

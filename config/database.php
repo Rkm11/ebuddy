@@ -61,7 +61,7 @@ return [
             'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
             'collation' => 'utf8_general_ci',
-            'prefix' => 'test_',
+            'prefix' => 'pipl_laravel_lib_',
             'strict' => false,
             'engine' => null,
         ],

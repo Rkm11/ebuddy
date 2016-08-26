@@ -4,10 +4,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class City extends Model 
 {
-	 use \Dimsav\Translatable\Translatable;
+	use \Dimsav\Translatable\Translatable;
 
-    public $translatedAttributes = ['name'];
-    protected $fillable = ['name','state_id','country_id'];
+        public $translatedAttributes = ['name'];
+        protected $fillable = ['name','state_id','country_id'];
 	
 	public function state()
 	{

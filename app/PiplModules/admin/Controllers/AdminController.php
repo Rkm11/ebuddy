@@ -1097,7 +1097,7 @@ class AdminController extends Controller
                                 $value='';
                                 if($global->slug=='site-logo')
                                 {
-                                   $value='<img src="'.asset("/storage/global-settings/$global->value").'">';
+                                   $value='<img src="'.storageasset("/storage/global-settings/$global->value").'">';
                                 }else{
                                  $value= $global->value;
                                 }
@@ -1172,8 +1172,11 @@ class AdminController extends Controller
 		$all_users = UserInformation::all();
 		
 		
-		$admin_users =  $all_users->reject(function ($user) {  return $user->user->hasRole('superadmin')|| ($user->user_type>1); });
-             
+		$admin_users =  $all_users->reject(function ($user) {
+                    
+                    return $user->user->hasRole('superadmin')|| ($user->user_type>1); 
+                    
+                });
               
                 return Datatables::of($admin_users)
              

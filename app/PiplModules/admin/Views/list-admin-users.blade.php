@@ -107,7 +107,7 @@ $(function() {
                 
                       if ( type === 'display' ) {
                         
-                         return '<div class="cust-chqs">  <p> <input class="checkboxes" type="checkbox"  id="delete'+row.id+'" name="delete'+row.id+'" value="'+row.id+'"><label for="delete'+row.id+'"></label> </p></div>';
+                         return '<div class="cust-chqs">  <p> <input class="checkboxes" type="checkbox"  id="delete'+row.user_id+'" name="delete'+row.user_id+'" value="'+row.user_id+'"><label for="delete'+row.user_id+'"></label> </p></div>';
                     }
                     return data;
                 },
@@ -127,7 +127,7 @@ $(function() {
                
                     if ( type === 'display' ) {
                         
-                        return '<a class="btn btn-sm btn-primary" href="{{url("admin/update-admin-user/")}}/'+row.id+'">Update</a>';
+                        return '<a class="btn btn-sm btn-primary" href="{{url("admin/update-admin-user/")}}/'+row.user_id+'">Update</a>';
                     }
                     return data;
                 },
@@ -142,7 +142,7 @@ $(function() {
                
                     if ( type === 'display' ) {
                         
-                        return '<form id="delete_user_'+row.id+'" method="post" action="{{url("/admin/delete-admin-user")}}/'+row.id+'">{{ method_field("DELETE") }} {!! csrf_field() !!}<button onclick="confirmDelete('+row.id+')" class="btn btn-sm btn-danger" type="button">Delete</button></form>';
+                        return '<form id="delete_user_'+row.user_id+'" method="post" action="{{url("/admin/delete-admin-user")}}/'+row.user_id+'">{{ method_field("DELETE") }} {!! csrf_field() !!}<button onclick="confirmDelete('+row.user_id+')" class="btn btn-sm btn-danger" type="button">Delete</button></form>';
                     }
                     return data;
                 },
