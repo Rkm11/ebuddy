@@ -107,7 +107,9 @@ switch ($segments) {
                     $segment_value = 'testimonial';
                     break;
 
-
+                case 'newsletters':
+                    $segment_value = 'newsletters';
+                    break;
 
 
 
@@ -311,6 +313,16 @@ switch ($segments) {
 						
 					</ul>
 				</li>
+                                @endif
+                                  @if(Auth::user()->hasPermission('view.testimonials')==true || Auth::user()->isSuperadmin())
+                                               
+                                <li class="start">
+					<a href="{{url("admin/testimonials/list")}}">
+					  <i class="icon-list"></i>
+					 <span class="title">Manage Testimonials</span>
+					</a>
+				</li>
+                                
                                 @endif
                                   @if(Auth::user()->hasPermission('view.testimonials')==true || Auth::user()->isSuperadmin())
                                                

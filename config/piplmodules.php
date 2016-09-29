@@ -10,6 +10,7 @@ return [
                 'category',
                 'socialconnect',  
 				'ims',	
+				'newsletter',
 		'contentpage', // It must include always in last
     ),
 	'front-view-layout-location'=>'layouts.app',

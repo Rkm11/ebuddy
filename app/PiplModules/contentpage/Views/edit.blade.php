@@ -25,9 +25,6 @@
 					
 				</li>
                         </ul>
-
-  
-    
       <!-- BEGIN SAMPLE FORM PORTLET-->
         <div class="portlet box blue">
              <div class="portlet-title">

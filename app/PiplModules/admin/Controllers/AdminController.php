@@ -567,9 +567,7 @@ class AdminController extends Controller
                                     $message->to( $arr_user_data->email)->subject("Email Changed Successfully!");
 
                     });
-                    //updating user Password
-                    $arr_user_data->password=$data->new_password;
-                    $arr_user_data->save();
+                 
                     $succes_msg="User email has been updated successfully!";
                     return redirect("admin/update-registered-user/".$user_id)->with("profile-updated",$succes_msg);
 
@@ -1193,7 +1191,12 @@ class AdminController extends Controller
                      return $admin_users->user->email;
                 })
                ->addColumn('role', function($admin_users){
-                    return $admin_users->user->getRoles()->first()->name;
+                   $role="";
+                   if(isset($admin_users->user->getRoles()->first()->name))
+                   {
+                       $role=$admin_users->user->getRoles()->first()->name;
+                   }
+                    return $role;
                 })
                ->addColumn('status', function($admin_users){
                      return ($admin_users ->user_status>0)? 'Active': 'Inactive';
