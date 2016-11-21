@@ -1095,7 +1095,7 @@ class AdminController extends Controller
                                 $value='';
                                 if($global->slug=='site-logo')
                                 {
-                                   $value='<img src="'.storageasset("/storage/global-settings/$global->value").'">';
+                                   $value='<img src="'.storage("/storageasset/global-settings/$global->value").'">';
                                 }else{
                                  $value= $global->value;
                                 }
