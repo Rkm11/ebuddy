@@ -1093,7 +1093,7 @@ class AdminController extends Controller
                                 
                             ->addColumn('value', function($global){
                                 $value='';
-                                if($global->slug=='site-logo')
+                                if($global->slug=='sitse-logo')
                                 {
                                    $value='<img src="'.storage("/storageasset/global-settings/$global->value").'">';
                                 }else{
@@ -1634,9 +1634,23 @@ class AdminController extends Controller
 		$all_states = State::translatedIn(\App::getLocale())->get();
 		//return Datatables::collection($all_states)->make(true);
                 return Datatables::of($all_states)
-               
-                ->addColumn('country', function($states){
-                     return $states->country->translate()->name;
+                 ->addColumn('Language', function($state){
+                     $language='<button class="btn btn-sm btn-warning dropdown-toggle" type="button" id="langDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Another Language <span class="caret"></span> </button>
+                         <ul class="dropdown-menu multilanguage" aria-labelledby="langDropDown">';
+                    if(count(config("translatable.locales_to_display")))
+                    {
+                     foreach(config("translatable.locales_to_display") as $locale=>$locale_full_name)
+                     {
+                          if($locale != 'en')
+                          {
+                            $language.='<li class="dropdown-item"> <a href="update-language/'.$state->id.'/'.$locale.'">'.$locale_full_name.'</a></li>';
+                          }
+                     }
+                    }
+                    return $language;
+                 })
+                ->addColumn('country', function($state){
+                     return $state->country->translate()->name;
                 })
                 ->make(true);
 	}
@@ -1719,7 +1733,7 @@ class AdminController extends Controller
 								
 								$translated_state->save();
 								$state->save();
-								return redirect('admin/states/list')->with('update-state-status','State has been updated Successfully!');
+								return redirect('admin/states/list')->with('update-state-status','States has been updated Successfully!');
 								
 							}
 						
@@ -1770,7 +1784,7 @@ class AdminController extends Controller
 								
 								$translated_state->save();
 								
-								return redirect()->back()->with('update-state-status','State updated successfully!');
+								return redirect('admin/states/list')->with('update-state-status','State has been updated Successfully!');
 							}
 						
 					}
@@ -1827,9 +1841,23 @@ class AdminController extends Controller
 		
 		//return Datatables::collection($all_states)->make(true);
                 return Datatables::of($all_cities)
-               
-                ->addColumn('country', function($cities){
-                     return $cities->country->translate()->name;
+                ->addColumn('Language', function($city){
+                     $language='<button class="btn btn-sm btn-warning dropdown-toggle" type="button" id="langDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Another Language <span class="caret"></span> </button>
+                         <ul class="dropdown-menu multilanguage" aria-labelledby="langDropDown">';
+                    if(count(config("translatable.locales_to_display")))
+                    {
+                     foreach(config("translatable.locales_to_display") as $locale=>$locale_full_name)
+                     {
+                          if($locale != 'en')
+                          {
+                            $language.='<li class="dropdown-item"> <a href="update-language/'.$city->id.'/'.$locale.'">'.$locale_full_name.'</a></li>';
+                          }
+                     }
+                    }
+                    return $language;
+                 })
+                ->addColumn('country', function($city){
+                     return $city->country->translate()->name;
                 })
                 ->addColumn('state', function($cities){
                      return $cities->state->translate()->name;
@@ -1970,8 +1998,8 @@ class AdminController extends Controller
 								}
 								
 								$translated_city->save();
-								
-								return redirect()->back()->with('update-city-status','City updated successfully!');
+								return redirect("admin/cities/list")->with('update-city-status','City updated successfully!');
+								//return redirect()->back()->with('update-city-status','City updated successfully!');
 							}
 						
 					}
