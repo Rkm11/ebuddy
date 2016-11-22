@@ -97,7 +97,7 @@ class CategoryController extends Controller
 									
 									if($locale!='')
 									{
-										$translated_category->contact_request_category_id =$category->id;
+										$translated_category->category_id =$category->id;
 										$translated_category->locale =$locale;
 									}
 									
