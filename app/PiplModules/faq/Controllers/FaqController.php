@@ -28,6 +28,21 @@ class FaqController extends Controller
 
 		$all_faqs = Faq::translatedIn(\App::getLocale())->get();
                  return Datatables::of($all_faqs)
+                   ->addColumn('Language', function($faq){
+                     $language='<button class="btn btn-sm btn-warning dropdown-toggle" type="button" id="langDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Another Language <span class="caret"></span> </button>
+                         <ul class="dropdown-menu multilanguage" aria-labelledby="langDropDown">';
+                    if(count(config("translatable.locales_to_display")))
+                    {
+                     foreach(config("translatable.locales_to_display") as $locale=>$locale_full_name)
+                     {
+                          if($locale != 'en')
+                          {
+                            $language.='<li class="dropdown-item"> <a href="faq/'.$faq->id.'/'.$locale.'">'.$locale_full_name.'</a></li>';
+                          }
+                     }
+                    }
+                    return $language;
+                   })       
                    ->addcolumn('category',function($faq)
                      {
                            if($faq->category) 
@@ -212,6 +227,7 @@ class FaqController extends Controller
                                return "-";
                            }
                      })
+                   
                     ->make(true);
 		
 	}

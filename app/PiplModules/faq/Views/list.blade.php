@@ -113,7 +113,6 @@ $(function() {
            { data: 'answer', name: 'answer'},
            { data: 'category', name: 'category'},
             { data: 'created_at', name: 'created_at' },
-            { data: 'updated_at', name: 'updated_at' },
             {data:   "Update",
               render: function ( data, type, row ) 
               {
@@ -128,7 +127,7 @@ $(function() {
                   name: 'Update'
                   
             },
-            
+             {data:   "Language","orderable": false,name: 'Update'},
              {data:   "Delete",
               render: function ( data, type, row ) {
                
