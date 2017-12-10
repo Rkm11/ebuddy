@@ -35,6 +35,10 @@ class User extends Model implements AuthenticatableContract,
     {
           return $this->hasOne('App\UserInformation');
     }
+    public function personalInfo()
+    {
+          return $this->hasOne('App\PersonalInfo');
+    }
     public function userAddress()
     {
           return $this->hasOne('App\UserAddress');

@@ -12,6 +12,7 @@ return [
 				'ims',	
 				'newsletter',
 		'contentpage', // It must include always in last
+		'contactus', // It must include always in last
     ),
 	'front-view-layout-location'=>'layouts.app',
 	'back-view-layout-location'=>'layouts.admin',

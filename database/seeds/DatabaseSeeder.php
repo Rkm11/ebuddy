@@ -120,7 +120,7 @@ class DatabaseSeeder extends Seeder
           
         //inserting super admin details in user table
             DB::table('users')->insert([
-                'email' => 'hancy@panaceatek.com',
+                'email' => 'rupeshm173@gmail.com',
 		        'password' => bcrypt('Pass@12345'),
                 'created_at'=>date('Y-m-d h:i:s'),
 				'updated_at'=>date('Y-m-d h:i:s')
@@ -145,9 +145,9 @@ class DatabaseSeeder extends Seeder
             ]);
             
 	   //inserting Default values in global Setting	
-		DB::table('global_settings')->insert(['name'=>'Site Email','value'=>'anuj@panaceatek.com','validate'=>'required|email','slug'=>'site-email','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);
+		DB::table('global_settings')->insert(['name'=>'Site Email','value'=>'rupesh@uncotechnologies.com','validate'=>'required|email','slug'=>'site-email','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);
 		DB::table('global_settings')->insert(['name'=>'Site Title','value'=>'p996','validate'=>'required','slug'=>'site-title','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);
-		DB::table('global_settings')->insert(['name'=>'Contact Email','value'=>'sofia@panaceatek.com','validate'=>'required|email','slug'=>'contact-email','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);
+		DB::table('global_settings')->insert(['name'=>'Contact Email','value'=>'rupesh@uncotechnologies.com','validate'=>'required|email','slug'=>'contact-email','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);
 		DB::table('global_settings')->insert(['name'=>'Date Format','value'=>'Y-m-d H:i:s','validate'=>'required','slug'=>'date-format','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);
 		DB::table('global_settings')->insert(['name'=>'Per Page Records','value'=>'10','validate'=>'required|numeric','slug'=>'per-page-record','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);
 		DB::table('global_settings')->insert(['name'=>'Facebook Page Link','value'=>'http://www.facebook.com/','validate'=>'required|url','slug'=>'facebook-link','created_at'=>date("Y-m-d H:i:s"),'updated_at'=>date("Y-m-d H:i:s")]);

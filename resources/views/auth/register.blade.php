@@ -100,6 +100,17 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group{{ $errors->has('countrycode') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Country Code</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="countrycode" value="{{ old('countrycode') }}">
+                                 @if ($errors->has('countrycode'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('countrycode') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
                        
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

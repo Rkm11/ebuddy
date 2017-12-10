@@ -2,6 +2,27 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/var/www/html/ebuddy/resources/views/announcments/announcment-list.blade.php</file>
+            <file>file:/var/www/html/ebuddy/app/Http/routes.php</file>
+            <file>file:/var/www/html/ebuddy/resources/views/includes/head.blade.php</file>
+            <file>file:/var/www/html/ebuddy/app/Announcement.php</file>
+            <file>file:/var/www/html/ebuddy/resources/views/welcome.blade.php</file>
+            <file>file:/var/www/html/ebuddy/resources/views/auth/login.blade.php</file>
+            <file>file:/var/www/html/ebuddy/resources/views/layouts/front-app.blade.php</file>
+            <file>file:/var/www/html/ebuddy/app/Http/Controllers/Auth/AuthController.php</file>
+            <file>file:/var/www/html/ebuddy/app/Role.php</file>
+            <file>file:/var/www/html/ebuddy/app/UserAnnouncement.php</file>
+            <file>file:/var/www/html/ebuddy/app/Http/Controllers/ProfileController.php</file>
+            <file>file:/var/www/html/ebuddy/app/Http/Controllers/AnnouncmentController.php</file>
+            <file>file:/var/www/html/ebuddy/resources/views/layouts/app.blade.php</file>
+            <file>file:/var/www/html/ebuddy/resources/views/student-profile/edit-profile.blade.php</file>
+            <file>file:/var/www/html/ebuddy/resources/views/includes/institute-topbar.blade.php</file>
+            <file>file:/var/www/html/ebuddy/resources/views/student-dashboard.blade.php</file>
+            <file>file:/var/www/html/ebuddy/public/css/main.css</file>
+            <file>file:/var/www/html/ebuddy/app/Http/Controllers/HomeController.php</file>
+            <file>file:/var/www/html/ebuddy/app/User.php</file>
+            <file>file:/var/www/html/ebuddy/resources/views/includes/student-topbar.blade.php</file>
+        </group>
     </open-files>
 </project-private>

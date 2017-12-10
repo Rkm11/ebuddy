@@ -11,16 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 Route::get('/permission/denied', 'HomeController@permissionDenied');
 Route::get('/redirect-dashboard', 'HomeController@toDashboard');
 Route::get('/user-profile', 'HomeController@toDashboard');
+Route::get('/my-announcment', 'AnnouncmentController@myAnnouncment');
 
 // For User Profile and account settings...
 Route::get('verify-user-email/{id}', ['uses' => 'ProfileController@verifyUserEmail']);
@@ -36,3 +37,9 @@ Route::post('change-email-post', ['middleware' => 'auth', 'uses' => 'ProfileCont
 
 Route::get('change-password', ['middleware' => 'auth', 'uses' => 'ProfileController@updatePassword']);
 Route::post('change-password-post', ['middleware' => 'auth', 'uses' => 'ProfileController@updatePasswordInfo']);
+/*Student routes start*/
+    Route::get('/edit-profile', 'ProfileController@editStudentProfile');
+    Route::post('/save-personal-data', 'ProfileController@updatePersonalData');
+    Route::get('/change-tab', 'HomeController@switchTab');
+Route::get('unread-message', [ 'uses' => 'AnnouncmentController@unreadMessage']);
+/*Student routes end*/

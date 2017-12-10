@@ -59,6 +59,7 @@ class AuthController extends Controller
             'password' => 'required|min:6|confirmed',
             'first_name' => 'required',
             'last_name' => 'required',
+            'countrycode' => 'required|Numeric',
 			
         ]);
     }
@@ -77,6 +78,8 @@ class AuthController extends Controller
     }
     protected function create(array $data)
     {
+        
+     
              //getting from global setting
               $site_email=GlobalValues::get('site-email');
               $site_title=GlobalValues::get('site-title');
@@ -125,6 +128,7 @@ class AuthController extends Controller
                 $data["suburb"]= isset($data["suburb"])?$data["suburb"]:"";
                 $data["user_custom_city"]= isset($data["user_custom_city"])?$data["user_custom_city"]:"";
                 $data["zipcode"]= isset($data["zipcode"])?$data["zipcode"]:"";
+                $data["countrycode"]= isset($data["countrycode"])?$data["countrycode"]:"";
                
                 /** user information goes here ****/
                 

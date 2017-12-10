@@ -8,7 +8,8 @@
     @yield('meta')
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" >
+    <!--<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
     <link rel="stylesheet" href="{{url('public/media/front/css/style.css')}}">
     
@@ -33,9 +34,9 @@
 <body id="app-layout">
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
-            <div class="navbar-header">
+<!--            <div class="navbar-header">
 
-                <!-- Collapsed Hamburger -->
+                 Collapsed Hamburger 
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
                     <span class="sr-only">Toggle Navigation</span>
                     <span class="icon-bar"></span>
@@ -43,30 +44,31 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <!-- Branding Image -->
+                 Branding Image 
                 <a class="navbar-brand" href="{{ url('/') }}">
                     PIPL LARAVEL LIBRARY
                 </a>
-            </div>
+            </div>-->
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
+<!--                <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
                      <li><a href="{{ url('/about-us') }}">About Us</a></li>
                      <li><a href="{{ url('/faqs') }}">FAq's</a></li>
-                </ul>
+                     <li><a href="{{ url('/contact-us') }}">Contact Us</a></li>
+                </ul>-->
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
+<!--                        <li><a href="{{ url('/login') }}">Login</a></li>-->
+                        <!--<li><a href="{{ url('/register') }}">Register</a></li>-->
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                 <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
